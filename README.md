@@ -13,7 +13,7 @@ Foi solicitado para a nossa empresa realizar o desenvolvimento de um sistema sim
 O sistema precisa:
 
 Funcionalidade | Status
----------------|------------
+:--------------|:------------
 Realizar o cadastro dos alunos matriculados na escola | 💻 TO-DO
 Realizar o cadastro dos funcionários da escola (Professor, diretor...) | 💻 TO-DO
 Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | 💻 TO-DO
@@ -27,6 +27,6 @@ O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSA
 ### Funcionalidade Opcionais
 
 Funcionalidade | Status
----------------|--------
+:--------------|:-------
 O sistema pode aceitar as presençãs dos alunos por dia | 💻 TO-DO
 O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻 TO-DO
