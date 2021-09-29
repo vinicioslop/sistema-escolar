@@ -30,13 +30,13 @@ namespace sistema_escolar
                 opcao = Console.ReadLine().ToUpper();
 
                 Opcoes(opcao);
-            } while(opcao != "X");
+            } while (opcao != "X");
         }
         public static void Opcoes(string opcao)
         {
             Console.Write("\n");
 
-            switch(opcao)
+            switch (opcao)
             {
                 case "1":
                     ViewProfessor();
@@ -75,11 +75,78 @@ namespace sistema_escolar
 
                 Console.Write("Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
-            } while(opcao != "X");
+
+                OpcoesProfessor(opcao);
+            } while (opcao != "X");
         }
         public static void ViewAluno()
         {
+            Console.Clear();
+        }
 
+        public static void exibeDisciplinas()
+        {
+            foreach (int i in Enum.GetValues(typeof(Disciplina)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
+            }
+
+            Console.Write("\n");
+        }
+        public static void OpcoesProfessor(string opcao)
+        {
+            switch (opcao)
+            {
+                case "1":
+                    InserirProfessor();
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    break;
+                case "x":
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        public static void InserirProfessor()
+        {
+            Console.WriteLine("CADASTRO DE PROFESSOR");
+
+            Console.Write("\n");
+
+            Console.Write("Digite o Nome.......: ");
+            string nomeE = Console.ReadLine();
+
+            Console.Write("Digite o Sobrenome..: ");
+            string sobrenomeE = Console.ReadLine();
+
+            Console.Write("Digite o CPF........: ");
+            string cpfE = Console.ReadLine();
+
+            exibeDisciplinas();
+
+            Console.Write("Escolha a Disciplina: ");
+            int disciplinaE = Convert.ToInt32(Console.ReadLine());
+
+            Professor professor = new Professor(
+                id: professores.ProximoId(),
+                nome: nomeE,
+                sobrenome: sobrenomeE,
+                cpf: cpfE,
+                disciplina: (Disciplina)disciplinaE
+            );
+
+            professores.Inserir(professor);
         }
     }
 }
