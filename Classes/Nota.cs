@@ -7,5 +7,26 @@ namespace sistema_escolar
         private double TerceiraNota { get; set; }
         private double QuartaNota { get; set; }
         private double Media { get; set; }
+
+        public double retornaPrimeiraNota()
+        {
+            return this.PrimeiraNota;
+        }
+        public double retornaSegundaNota()
+        {
+            return this.SegundaNota;
+        }
+        public double retornaTerceiraNota()
+        {
+            return this.PrimeiraNota;
+        }
+        public double retornaQuartaNota()
+        {
+            return this.PrimeiraNota;
+        }
+        public double retornaMedia()
+        {
+            return this.Media;
+        }
     }
 }

@@ -5,9 +5,9 @@ namespace sistema_escolar.Interfaces
     public interface IRepositorio<T>
     {
         List<T> Lista();
-        T RetornaPorId();
+        T RetornaPorId(int id);
         void Inserir(T entidade);
         void Atualizar(int id, T entidade);
-        void ProximoId();
+        int ProximoId();
     }
 }
