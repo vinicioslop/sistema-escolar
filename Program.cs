@@ -12,6 +12,8 @@ namespace sistema_escolar
             string opcao;
             do
             {
+                Console.Clear();
+
                 Console.WriteLine("Bem-vindo ao Sistema Escolar Simplficado");
                 Console.WriteLine("da Escola Estadual de Algum Lugar!");
 
@@ -51,7 +53,29 @@ namespace sistema_escolar
         }
         public static void ViewProfessor()
         {
+            string opcao;
+            do
+            {
+                Console.Clear();
 
+                Console.WriteLine("Interface de Professor");
+
+                Console.Write("\n");
+
+                Console.WriteLine("Insira a opção com base na ação preferida:");
+                Console.WriteLine("1 - CADASTRO DE PROFESSOR");
+                Console.WriteLine("2 - LISTAGEM DE PROFESSORES");
+                Console.WriteLine("3 - INSERÇÃO DE NOTA DE ALUNO");
+                Console.WriteLine("4 - VIZUALIZAR ALUNOS");
+                Console.WriteLine("5 - VIZUALIZAR ALUNO");
+                Console.WriteLine("6 - ALTERAR STATUS DE ALUNO");
+                Console.WriteLine("X - VOLTAR PARA A HOME");
+
+                Console.Write("\n");
+
+                Console.Write("Informe a opção desejada: ");
+                opcao = Console.ReadLine().ToUpper();
+            } while(opcao != "X");
         }
         public static void ViewAluno()
         {
