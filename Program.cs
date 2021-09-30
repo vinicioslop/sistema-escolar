@@ -188,9 +188,9 @@ namespace sistema_escolar
             Console.Write("\n");
 
             Console.WriteLine("Professor atualizado com sucesso!");
-            
+
             Console.Clear();
-            
+
             Console.Write("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
@@ -249,14 +249,200 @@ namespace sistema_escolar
             Console.Write("\n");
 
             Console.WriteLine("Professor excluído com sucesso!");
-            
+
             Console.Write("\n");
             Console.Write("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
         public static void ViewAluno()
         {
+            string opcao;
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("Interface de Aluno");
+
+                Console.Write("\n");
+
+                Console.WriteLine("Insira a opção com base na ação preferida:");
+                Console.WriteLine("1 - VIZUALIZAR DADOS");
+                Console.WriteLine("2 - ATUALIZAR DADOS");
+                Console.WriteLine("3 - VIZUALIZAR NOTAS");
+
+                // TO-DO: PASSAR RESPONSABILIDADES DE CRIAÇÃO, EDIÇÃO E REMOÇÃO PARA OUTRA CLASSE
+                Console.WriteLine("4 - CADASTRAR ALUNO");
+                Console.WriteLine("5 - EXCLUIR ALUNO");
+                Console.WriteLine("X - VOLTAR PARA A HOME");
+
+                Console.Write("\n");
+
+                Console.Write("Informe a opção desejada: ");
+                opcao = Console.ReadLine().ToUpper();
+
+                OpcoesAluno(opcao);
+            } while (opcao != "X");
+        }
+        public static void OpcoesAluno(string opcao)
+        {
+            switch (opcao)
+            {
+                case "1":
+                    VizualizarDadosAluno();
+                    break;
+                case "2":
+                    AtualizarAluno();
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    InserirAluno();
+                    break;
+                case "5":
+                    DesativarAluno();
+                    break;
+                case "x":
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void VizualizarDadosAluno()
+        {
             Console.Clear();
+
+            Console.Write("Insira o seu ID: ");
+            int idE = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\n");
+
+            Aluno aluno = alunos.RetornaPorId(idE);
+
+            Console.Clear();
+
+            Console.WriteLine("DADOS NO SISTEMA");
+
+            Console.Write("\n");
+
+            Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
+            Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
+            Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
+            Console.WriteLine($"..........: {aluno.retornaStatus()}");
+            Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
+
+            Console.Write("\n");
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+        public static void InserirAluno()
+        {
+            Console.Clear();
+
+            Console.WriteLine("CADASTRO DE ALUNO");
+
+            Console.Write("\n");
+
+            Aluno aluno = criaAluno();
+
+            alunos.Inserir(aluno);
+        }
+        public static Aluno criaAluno()
+        {
+            Console.Write("Digite o Nome.........: ");
+            string nomeE = Console.ReadLine();
+
+            Console.Write("Digite o Sobrenome....: ");
+            string sobrenomeE = Console.ReadLine();
+
+            Console.Write("Digite o CPF..........: ");
+            string cpfE = Console.ReadLine();
+
+            ExibeAnos();
+
+            Console.Write("Escolha o Ano do Aluno: ");
+            int anoE = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            Console.WriteLine("DADOS INSERIDOS");
+
+            Console.Write("\n");
+
+            Console.WriteLine($"NOME......: {nomeE}");
+            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
+            Console.WriteLine($"CPF.......: {cpfE}");
+            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
+
+            Console.Write("\n");
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+
+            return new Aluno(
+                id: alunos.ProximoId(),
+                nome: nomeE,
+                sobrenome: sobrenomeE,
+                cpf: cpfE,
+                ano: (Ano)anoE
+            );
+        }
+        public static void ExibeAnos()
+        {
+            Console.Write("\n");
+
+            Console.WriteLine("ANOS");
+
+            Console.Write("\n");
+
+            foreach (int i in Enum.GetValues(typeof(Ano)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Ano), i));
+            }
+
+            Console.Write("\n");
+        }
+        public static void AtualizarAluno()
+        {
+            Console.Clear();
+
+            Console.WriteLine("ATUALIZAÇÃO DE ALUNO");
+
+            Console.Write("\n");
+
+            Console.Write("Informe o ID do Aluno: ");
+            int idE = Convert.ToInt32(Console.ReadLine());
+
+            Aluno aluno = criaAluno();
+
+            alunos.Atualizar(idE, aluno);
+
+            Console.Write("\n");
+
+            Console.WriteLine("Aluno atualizado com sucesso.");
+
+            Console.Write("\n");
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+        public static void DesativarAluno()
+        {
+            Console.Clear();
+
+            Console.WriteLine("EXCLUIR ALUNO");
+
+            Console.Write("\n");
+
+            Console.Write("Informe o ID do aluno: ");
+            int idE = Convert.ToInt32(Console.ReadLine());
+
+            alunos.Desativa(idE);
+
+            Console.Write("\n");
+
+            Console.WriteLine("Aluno excluído com sucesso!");
+
+            Console.Write("\n");
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

@@ -21,6 +21,10 @@ namespace sistema_escolar
         {
             return this.Sobrenome;
         }
+        public string retornaCPF()
+        {
+            return this.CPF;
+        }
         public Disciplina retornaDisciplina()
         {
             return this.Disciplina;
