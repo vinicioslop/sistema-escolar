@@ -14,8 +14,8 @@ O sistema precisa:
 
 Funcionalidade | Status
 :--------------|:------------
-Realizar o cadastro dos alunos matriculados na escola | ✔ FALTA VALIDAÇÃO E TRATAMENTO DE ERROS
-Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✔ FALTA VALIDAÇÃO E TRATAMENTO DE ERROS
+Realizar o cadastro dos alunos matriculados na escola | ✔ FALTA VALIDAÇÃO
+Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✔ FALTA VALIDAÇÃO
 Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✔
 Realizar o cadastro das disciplinas que são lecionadas na escola | ✔
 O sistema precisa vincular as matérias que cada professor leciona | ✔
