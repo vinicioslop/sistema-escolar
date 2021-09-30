@@ -22,28 +22,42 @@ namespace sistema_escolar.Metodos
         {
             Console.Clear();
 
-            Console.Write("Insira o seu ID: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Insira o seu ID: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Aluno aluno = repositorio.RetornaPorId(idE);
+                Aluno aluno = repositorio.RetornaPorId(idE);
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.WriteLine("DADOS NO SISTEMA");
+                Console.WriteLine("DADOS NO SISTEMA");
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
-            Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
-            Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
-            Console.WriteLine($"STATUS....: {aluno.retornaStatus()}");
-            Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
+                Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
+                Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
+                Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
+                Console.WriteLine($"STATUS....: {aluno.retornaStatus()}");
+                Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+
         }
         public void ListarAlunos()
         {
@@ -53,21 +67,10 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            var lista = repositorio.Lista();
-
-            if (lista.Count == 0)
+            try
             {
-                Console.Write("\n");
+                var lista = repositorio.Lista();
 
-                Console.WriteLine("Não há alunos cadastrados.");
-
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            else
-            {
                 foreach (var aluno in lista)
                 {
                     Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.retornaNome()} {aluno.retornaSobrenome()}");
@@ -75,50 +78,80 @@ namespace sistema_escolar.Metodos
                     Console.WriteLine($" | DESATIVADO: {aluno.retornaDesativado()}");
                 }
 
+                if(lista.Count == 0)
+                {
+                    Console.WriteLine("Não há alunos cadastrados.");
+                }
+
                 Console.Write("\n");
 
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
         public Aluno criaAluno()
         {
-            Console.Write("Digite o Nome.........: ");
-            string nomeE = Console.ReadLine();
+            try
+            {
+                Console.Write("Digite o Nome.........: ");
+                string nomeE = Console.ReadLine();
 
-            Console.Write("Digite o Sobrenome....: ");
-            string sobrenomeE = Console.ReadLine();
+                Console.Write("Digite o Sobrenome....: ");
+                string sobrenomeE = Console.ReadLine();
 
-            Console.Write("Digite o CPF..........: ");
-            string cpfE = Console.ReadLine();
+                Console.Write("Digite o CPF..........: ");
+                string cpfE = Console.ReadLine();
 
-            ExibeAnos();
+                ExibeAnos();
 
-            Console.Write("Escolha o Ano do Aluno: ");
-            int anoE = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Escolha o Ano do Aluno: ");
+                int anoE = Convert.ToInt32(Console.ReadLine());
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.WriteLine("DADOS INSERIDOS");
+                Console.WriteLine("DADOS INSERIDOS");
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
+                Console.WriteLine($"NOME......: {nomeE}");
+                Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
+                Console.WriteLine($"CPF.......: {cpfE}");
+                Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
 
-            return new Aluno(
-                id: repositorio.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                ano: (Ano)anoE
-            );
+                return new Aluno(
+                    id: repositorio.ProximoId(),
+                    nome: nomeE,
+                    sobrenome: sobrenomeE,
+                    cpf: cpfE,
+                    ano: (Ano)anoE
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+
+                return null;
+            }
         }
         public void ExibeAnos()
         {
@@ -143,20 +176,33 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            Console.Write("Informe o ID do Aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Informe o ID do Aluno: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            Aluno aluno = criaAluno();
+                Aluno aluno = criaAluno();
 
-            repositorio.Atualizar(idE, aluno);
+                repositorio.Atualizar(idE, aluno);
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine("Aluno atualizado com sucesso.");
+                Console.WriteLine("Aluno atualizado com sucesso.");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         public void DesativarAluno()
         {
@@ -166,18 +212,31 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            Console.Write("Informe o ID do aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Informe o ID do aluno: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            repositorio.Desativa(idE);
+                repositorio.Desativa(idE);
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine("Aluno desativado com sucesso!");
+                Console.WriteLine("Aluno desativado com sucesso!");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
     }
 }

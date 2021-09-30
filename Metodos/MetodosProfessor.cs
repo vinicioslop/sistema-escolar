@@ -7,34 +7,40 @@ namespace sistema_escolar.Metodos
     {
         public static ProfessorRepositorio repositorio = new ProfessorRepositorio();
         public void ListarProfessores()
-        {            
+        {
             Console.Clear();
 
             Console.WriteLine("LISTAGEM DE PROFESSORES");
 
             Console.Write("\n");
 
-            var lista = repositorio.Lista();
-
-            if (lista.Count == 0)
+            try
             {
-                Console.WriteLine("Não há professores cadastrados.");
+                var lista = repositorio.Lista();
 
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            else
-            {
                 foreach (var professor in lista)
                 {
                     Console.Write($"ID: {professor.Id} | NOME: {professor.retornaNome()} {professor.retornaSobrenome()}");
                     Console.WriteLine($" | DISCIPLINA: {professor.retornaDisciplina()} | DESATIVADO: {professor.retornaDesativado()}");
                 }
 
+                if(lista.Count == 0)
+                {
+                    Console.WriteLine("Não há alunos cadastrados.");
+                }
+
                 Console.Write("\n");
 
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
@@ -43,39 +49,65 @@ namespace sistema_escolar.Metodos
         {
             Console.Clear();
 
-            Console.Write("Insira o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Insira o ID do professor: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Professor professor = repositorio.RetornaPorId(idE);
+                Professor professor = repositorio.RetornaPorId(idE);
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.WriteLine("DADOS NO SISTEMA");
+                Console.WriteLine("DADOS NO SISTEMA");
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine($"NOME......: {professor.retornaNome()} {professor.retornaNome()}");
-            Console.WriteLine($"CPF.......: {professor.retornaCPF()}");
-            Console.WriteLine($"DISCIPLINA: {professor.retornaDisciplina()}");
-            Console.WriteLine($"DESATIVADO: {professor.retornaDesativado()}");
+                Console.WriteLine($"NOME......: {professor.retornaNome()} {professor.retornaNome()}");
+                Console.WriteLine($"CPF.......: {professor.retornaCPF()}");
+                Console.WriteLine($"DISCIPLINA: {professor.retornaDisciplina()}");
+                Console.WriteLine($"DESATIVADO: {professor.retornaDesativado()}");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         public void CadastrarProfessor()
         {
             Console.Clear();
 
-            Console.WriteLine("CADASTRO DE PROFESSOR");
+            try
+            {
+                Console.WriteLine("CADASTRO DE PROFESSOR");
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Professor professor = criaProfessor();
+                Professor professor = criaProfessor();
 
-            repositorio.Inserir(professor);
+                repositorio.Inserir(professor);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         public void ExibeDisciplinas()
         {
@@ -100,60 +132,88 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Informe o ID do professor: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            Professor professor = criaProfessor();
+                Professor professor = criaProfessor();
 
-            repositorio.Atualizar(idE, professor);
+                repositorio.Atualizar(idE, professor);
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine("Professor atualizado com sucesso!");
+                Console.WriteLine("Professor atualizado com sucesso!");
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         public Professor criaProfessor()
         {
-            Console.Write("Digite o Nome.......: ");
-            string nomeE = Console.ReadLine();
+            try
+            {
+                Console.Write("Digite o Nome.......: ");
+                string nomeE = Console.ReadLine();
 
-            Console.Write("Digite o Sobrenome..: ");
-            string sobrenomeE = Console.ReadLine();
+                Console.Write("Digite o Sobrenome..: ");
+                string sobrenomeE = Console.ReadLine();
 
-            Console.Write("Digite o CPF........: ");
-            string cpfE = Console.ReadLine();
+                Console.Write("Digite o CPF........: ");
+                string cpfE = Console.ReadLine();
 
-            ExibeDisciplinas();
+                ExibeDisciplinas();
 
-            Console.Write("Escolha a Disciplina: ");
-            int disciplinaE = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Escolha a Disciplina: ");
+                int disciplinaE = Convert.ToInt32(Console.ReadLine());
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.WriteLine("DADOS INSERIDOS");
+                Console.WriteLine("DADOS INSERIDOS");
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}");
+                Console.WriteLine($"NOME......: {nomeE}");
+                Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
+                Console.WriteLine($"CPF.......: {cpfE}");
+                Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
 
-            return new Professor(
-                id: repositorio.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                disciplina: (Disciplina)disciplinaE
-            );
+                return new Professor(
+                    id: repositorio.ProximoId(),
+                    nome: nomeE,
+                    sobrenome: sobrenomeE,
+                    cpf: cpfE,
+                    disciplina: (Disciplina)disciplinaE
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+
+                return null;
+            }
         }
         public void DesativarProfessor()
         {
@@ -163,18 +223,31 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("Informe o ID do professor: ");
+                int idE = Convert.ToInt32(Console.ReadLine());
 
-            repositorio.Desativa(idE);
+                repositorio.Desativa(idE);
 
-            Console.Write("\n");
+                Console.Write("\n");
 
-            Console.WriteLine("Professor desativado com sucesso!");
+                Console.WriteLine("Professor desativado com sucesso!");
 
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
+                Console.Write("\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\n");
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
     }
 }
