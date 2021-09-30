@@ -15,10 +15,10 @@ O sistema precisa:
 Funcionalidade | Status
 :--------------|:------------
 Realizar o cadastro dos alunos matriculados na escola | 💻 TO-DO
-Realizar o cadastro dos funcionários da escola (Professor, diretor...) | 💻 TO-DO
+Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✔ FALTA VALIDAÇÃO E TRATAMENTO DE ERROS
 Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | 💻 TO-DO
-Realizar o cadastro das disciplinas que são lecionadas na escola | 💻 TO-DO
-O sistema precisa vincular as matérias que cada professor leciona | 💻 TO-DO
+Realizar o cadastro das disciplinas que são lecionadas na escola | ✔
+O sistema precisa vincular as matérias que cada professor leciona | ✔
 O sistema precisa aceitar as notas de cada aluno | 💻 TO-DO
 O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻 TO-DO
 O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻 TO-DO
