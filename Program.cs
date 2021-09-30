@@ -79,20 +79,6 @@ namespace sistema_escolar
                 OpcoesProfessor(opcao);
             } while (opcao != "X");
         }
-        public static void ViewAluno()
-        {
-            Console.Clear();
-        }
-
-        public static void exibeDisciplinas()
-        {
-            foreach (int i in Enum.GetValues(typeof(Disciplina)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
-            }
-
-            Console.Write("\n");
-        }
         public static void OpcoesProfessor(string opcao)
         {
             switch (opcao)
@@ -101,6 +87,7 @@ namespace sistema_escolar
                     InserirProfessor();
                     break;
                 case "2":
+                    ListarProfessores();
                     break;
                 case "3":
                     break;
@@ -117,9 +104,26 @@ namespace sistema_escolar
             }
 
         }
+        public static void ListarProfessores()
+        {
+            Console.Clear();
 
+            Console.WriteLine("LISTAGEM DE PROFESSORES");
+
+            var lista = professores.Lista();
+
+            foreach(var professor in lista)
+            {
+                Console.WriteLine($"ID: {professor.Id} - NOME: {professor.retornaNome()} {professor.retornaSobrenome()} - DISCIPLINA: {professor.retornaDisciplina()}");
+            }
+
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
         public static void InserirProfessor()
         {
+            Console.Clear();
+
             Console.WriteLine("CADASTRO DE PROFESSOR");
 
             Console.Write("\n");
@@ -133,10 +137,26 @@ namespace sistema_escolar
             Console.Write("Digite o CPF........: ");
             string cpfE = Console.ReadLine();
 
-            exibeDisciplinas();
+            ExibeDisciplinas();
 
             Console.Write("Escolha a Disciplina: ");
             int disciplinaE = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            Console.WriteLine("DADOS INSERIDOS");
+
+            Console.Write("\n");
+
+            Console.WriteLine($"NOME......: {nomeE}");
+            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
+            Console.WriteLine($"CPF.......: {cpfE}");
+            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}");
+
+            Console.Write("\n");
+
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
 
             Professor professor = new Professor(
                 id: professores.ProximoId(),
@@ -147,6 +167,25 @@ namespace sistema_escolar
             );
 
             professores.Inserir(professor);
+        }
+        public static void ExibeDisciplinas()
+        {
+            Console.Write("\n");
+
+            Console.WriteLine("DISCIPLINAS");
+
+            Console.Write("\n");
+
+            foreach (int i in Enum.GetValues(typeof(Disciplina)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
+            }
+
+            Console.Write("\n");
+        }
+        public static void ViewAluno()
+        {
+            Console.Clear();
         }
     }
 }
