@@ -16,7 +16,7 @@ Funcionalidade | Status
 :--------------|:------------
 Realizar o cadastro dos alunos matriculados na escola | ✔ FALTA VALIDAÇÃO E TRATAMENTO DE ERROS
 Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✔ FALTA VALIDAÇÃO E TRATAMENTO DE ERROS
-Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | 💻 TO-DO
+Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✔
 Realizar o cadastro das disciplinas que são lecionadas na escola | ✔
 O sistema precisa vincular as matérias que cada professor leciona | ✔
 O sistema precisa aceitar as notas de cada aluno | 💻 TO-DO
@@ -28,5 +28,5 @@ O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSA
 
 Funcionalidade | Status
 :--------------|:-------
-O sistema pode aceitar as presençãs dos alunos por dia | 💻 TO-DO
+O sistema pode aceitar as presenças dos alunos por dia | 💻 TO-DO
 O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻 TO-DO
