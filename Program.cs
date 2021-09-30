@@ -1,12 +1,10 @@
 ﻿using System;
-using sistema_escolar.Classes.Repositorios;
+using sistema_escolar.Metodos;
 
 namespace sistema_escolar
 {
     class Program
     {
-        static AlunoRepositorio alunos = new AlunoRepositorio();
-        static ProfessorRepositorio professores = new ProfessorRepositorio();
         static void Main(string[] args)
         {
             string opcao;
@@ -92,7 +90,7 @@ namespace sistema_escolar
                 case "2":
                     break;
                 case "3":
-                ListarAlunos();
+                    ListarAlunos();
                     break;
                 case "4":
                     break;
@@ -103,150 +101,6 @@ namespace sistema_escolar
                 default:
                     break;
             }
-        }
-        public static void ListarProfessores()
-        {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE PROFESSORES");
-
-            Console.Write("\n");
-
-            var lista = professores.Lista();
-
-            if (lista.Count == 0)
-            {
-                Console.WriteLine("Não há professores cadastrados.");
-
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            else
-            {
-                foreach (var professor in lista)
-                {
-                    Console.Write($"ID: {professor.Id} | NOME: {professor.retornaNome()} {professor.retornaSobrenome()}");
-                    Console.WriteLine($" | DISCIPLINA: {professor.retornaDisciplina()} | DESATIVADO: {professor.retornaDesativado()}");
-                }
-
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-        }
-        public static void CadastrarProfessor()
-        {
-            Console.Clear();
-
-            Console.WriteLine("CADASTRO DE PROFESSOR");
-
-            Console.Write("\n");
-
-            Professor professor = criaProfessor();
-
-            professores.Inserir(professor);
-        }
-        public static void ExibeDisciplinas()
-        {
-            Console.Write("\n");
-
-            Console.WriteLine("DISCIPLINAS");
-
-            Console.Write("\n");
-
-            foreach (int i in Enum.GetValues(typeof(Disciplina)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
-            }
-
-            Console.Write("\n");
-        }
-        public static void AtualizarProfessor()
-        {
-            Console.Clear();
-
-            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR");
-
-            Console.Write("\n");
-
-            Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            Professor professor = criaProfessor();
-
-            professores.Atualizar(idE, professor);
-
-            Console.Write("\n");
-
-            Console.WriteLine("Professor atualizado com sucesso!");
-
-            Console.Clear();
-
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
-        }
-        public static Professor criaProfessor()
-        {
-            Console.Write("Digite o Nome.......: ");
-            string nomeE = Console.ReadLine();
-
-            Console.Write("Digite o Sobrenome..: ");
-            string sobrenomeE = Console.ReadLine();
-
-            Console.Write("Digite o CPF........: ");
-            string cpfE = Console.ReadLine();
-
-            ExibeDisciplinas();
-
-            Console.Write("Escolha a Disciplina: ");
-            int disciplinaE = Convert.ToInt32(Console.ReadLine());
-
-            Console.Clear();
-
-            Console.WriteLine("DADOS INSERIDOS");
-
-            Console.Write("\n");
-
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
-
-            return new Professor(
-                id: professores.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                disciplina: (Disciplina)disciplinaE
-            );
-        }
-        public static void DesativarProfessor()
-        {
-            Console.Clear();
-
-            Console.WriteLine("DESATIVAR PROFESSOR");
-
-            Console.Write("\n");
-
-            Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            professores.Desativa(idE);
-
-            Console.Write("\n");
-
-            Console.WriteLine("Professor desativado com sucesso!");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
         }
         public static void ViewSecretaria()
         {
@@ -289,7 +143,7 @@ namespace sistema_escolar
                     ListarProfessores();
                     break;
                 case "3":
-                    InserirAluno();
+                    CadastrarAluno();
                     break;
                 case "4":
                     CadastrarProfessor();
@@ -310,42 +164,6 @@ namespace sistema_escolar
                     break;
                 default:
                     break;
-            }
-        }
-        public static void ListarAlunos()
-        {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE Alunos");
-
-            Console.Write("\n");
-
-            var lista = alunos.Lista();
-
-            if (lista.Count == 0)
-            {
-                Console.Write("\n");
-
-                Console.WriteLine("Não há alunos cadastrados.");
-
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            else
-            {
-                foreach (var aluno in lista)
-                {
-                    Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.retornaNome()} {aluno.retornaSobrenome()}");
-                    Console.Write($" | ANO: {aluno.retornaAno()} | STATUS: {aluno.retornaStatus()}");
-                    Console.WriteLine($" | DESATIVADO: {aluno.retornaDesativado()}");
-                }
-
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
         }
         public static void ViewAluno()
@@ -387,142 +205,65 @@ namespace sistema_escolar
                     break;
             }
         }
+        public static void CadastrarProfessor()
+        {
+            MetodosProfessor repositorio = new MetodosProfessor();
+
+            repositorio.CadastrarProfessor();
+        }
+        public static void ListarProfessores()
+        {
+            MetodosProfessor repositorio = new MetodosProfessor();
+
+            repositorio.ListarProfessores();
+        }
+        public static void ListarProfessor()
+        {
+            MetodosProfessor repositorio = new MetodosProfessor();
+
+            repositorio.ListarProfessor();
+        }
+        public static void AtualizarProfessor()
+        {
+            MetodosProfessor repositorio = new MetodosProfessor();
+
+            repositorio.AtualizarProfessor();
+        }
+        public static void DesativarProfessor()
+        {
+            MetodosProfessor repositorio = new MetodosProfessor();
+
+            repositorio.DesativarProfessor();
+        }
+        public static void CadastrarAluno()
+        {
+            MetodosAluno repositorio = new MetodosAluno();
+
+            repositorio.CadastrarAluno();
+        }
+        public static void ListarAlunos()
+        {
+            MetodosAluno repositorio = new MetodosAluno();
+
+            repositorio.ListarAlunos();
+        }
         public static void ListarAluno()
         {
-            Console.Clear();
+            MetodosAluno repositorio = new MetodosAluno();
 
-            Console.Write("Insira o seu ID: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("\n");
-
-            Aluno aluno = alunos.RetornaPorId(idE);
-
-            Console.Clear();
-
-            Console.WriteLine("DADOS NO SISTEMA");
-
-            Console.Write("\n");
-
-            Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
-            Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
-            Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
-            Console.WriteLine($"STATUS....: {aluno.retornaStatus()}");
-            Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
-        }
-        public static void InserirAluno()
-        {
-            Console.Clear();
-
-            Console.WriteLine("CADASTRO DE ALUNO");
-
-            Console.Write("\n");
-
-            Aluno aluno = criaAluno();
-
-            alunos.Inserir(aluno);
-        }
-        public static Aluno criaAluno()
-        {
-            Console.Write("Digite o Nome.........: ");
-            string nomeE = Console.ReadLine();
-
-            Console.Write("Digite o Sobrenome....: ");
-            string sobrenomeE = Console.ReadLine();
-
-            Console.Write("Digite o CPF..........: ");
-            string cpfE = Console.ReadLine();
-
-            ExibeAnos();
-
-            Console.Write("Escolha o Ano do Aluno: ");
-            int anoE = Convert.ToInt32(Console.ReadLine());
-
-            Console.Clear();
-
-            Console.WriteLine("DADOS INSERIDOS");
-
-            Console.Write("\n");
-
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
-
-            return new Aluno(
-                id: alunos.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                ano: (Ano)anoE
-            );
-        }
-        public static void ExibeAnos()
-        {
-            Console.Write("\n");
-
-            Console.WriteLine("ANOS");
-
-            Console.Write("\n");
-
-            foreach (int i in Enum.GetValues(typeof(Ano)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Ano), i));
-            }
-
-            Console.Write("\n");
+            repositorio.ListarAluno();
         }
         public static void AtualizarAluno()
         {
-            Console.Clear();
+            MetodosAluno repositorio = new MetodosAluno();
 
-            Console.WriteLine("ATUALIZAÇÃO DE ALUNO");
-
-            Console.Write("\n");
-
-            Console.Write("Informe o ID do Aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            Aluno aluno = criaAluno();
-
-            alunos.Atualizar(idE, aluno);
-
-            Console.Write("\n");
-
-            Console.WriteLine("Aluno atualizado com sucesso.");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            repositorio.AtualizarAluno();
         }
         public static void DesativarAluno()
         {
-            Console.Clear();
+            MetodosAluno repositorio = new MetodosAluno();
 
-            Console.WriteLine("DESATIVAR ALUNO");
-
-            Console.Write("\n");
-
-            Console.Write("Informe o ID do aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            alunos.Desativa(idE);
-
-            Console.Write("\n");
-
-            Console.WriteLine("Aluno desativado com sucesso!");
-
-            Console.Write("\n");
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            repositorio.DesativarAluno();
         }
     }
 }
