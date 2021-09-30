@@ -20,8 +20,9 @@ namespace sistema_escolar
                 Console.Write("\n");
 
                 Console.WriteLine("Insira a opção com base no tipo de acesso preferido:");
-                Console.WriteLine("1 - PROFESSOR");
-                Console.WriteLine("2 - ALUNO");
+                Console.WriteLine("1 - SECRETARIA");
+                Console.WriteLine("2 - PROFESSOR");
+                Console.WriteLine("3 - ALUNO");
                 Console.WriteLine("X - SAIR");
 
                 Console.Write("\n");
@@ -39,9 +40,12 @@ namespace sistema_escolar
             switch (opcao)
             {
                 case "1":
-                    ViewProfessor();
+                    ViewSecretaria();
                     break;
                 case "2":
+                    ViewProfessor();
+                    break;
+                case "3":
                     ViewAluno();
                     break;
                 case "X":
@@ -63,14 +67,11 @@ namespace sistema_escolar
                 Console.Write("\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
-                Console.WriteLine("1 - CADASTRO DE PROFESSOR");
-                Console.WriteLine("2 - LISTAGEM DE PROFESSORES");
-                Console.WriteLine("3 - ATUALIZAR PROFESSOR");
-                Console.WriteLine("4 - EXCLUIR PROFESSOR");
-                Console.WriteLine("5 - INSERÇÃO DE NOTA DE ALUNO");
-                Console.WriteLine("6 - VIZUALIZAR ALUNOS");
-                Console.WriteLine("7 - VIZUALIZAR ALUNO");
-                Console.WriteLine("8 - ALTERAR STATUS DE ALUNO");
+                Console.WriteLine("1 - LISTAGEM DE PROFESSORES");
+                Console.WriteLine("2 - INSERÇÃO DE NOTA DE ALUNO");
+                Console.WriteLine("3 - VIZUALIZAR ALUNOS");
+                Console.WriteLine("4 - VIZUALIZAR ALUNO");
+                Console.WriteLine("5 - ALTERAR STATUS DE ALUNO");
                 Console.WriteLine("X - VOLTAR PARA A HOME");
 
                 Console.Write("\n");
@@ -86,27 +87,22 @@ namespace sistema_escolar
             switch (opcao)
             {
                 case "1":
-                    InserirProfessor();
-                    break;
-                case "2":
                     ListarProfessores();
                     break;
+                case "2":
+                    break;
                 case "3":
-                    AtualizarProfessor();
+                ListarAlunos();
                     break;
                 case "4":
-                    DesativarProfessor();
                     break;
                 case "5":
-                    break;
-                case "6":
                     break;
                 case "x":
                     break;
                 default:
                     break;
             }
-
         }
         public static void ListarProfessores()
         {
@@ -120,8 +116,6 @@ namespace sistema_escolar
 
             if (lista.Count == 0)
             {
-                Console.Write("\n");
-
                 Console.WriteLine("Não há professores cadastrados.");
 
                 Console.Write("\n");
@@ -134,7 +128,7 @@ namespace sistema_escolar
                 foreach (var professor in lista)
                 {
                     Console.Write($"ID: {professor.Id} | NOME: {professor.retornaNome()} {professor.retornaSobrenome()}");
-                    Console.WriteLine($" | DISCIPLINA: {professor.retornaDisciplina()} | STATUS: {professor.retornaDesativado()}");
+                    Console.WriteLine($" | DISCIPLINA: {professor.retornaDisciplina()} | DESATIVADO: {professor.retornaDesativado()}");
                 }
 
                 Console.Write("\n");
@@ -143,7 +137,7 @@ namespace sistema_escolar
                 Console.ReadKey();
             }
         }
-        public static void InserirProfessor()
+        public static void CadastrarProfessor()
         {
             Console.Clear();
 
@@ -237,7 +231,7 @@ namespace sistema_escolar
         {
             Console.Clear();
 
-            Console.WriteLine("EXCLUIR PROFESSOR");
+            Console.WriteLine("DESATIVAR PROFESSOR");
 
             Console.Write("\n");
 
@@ -248,11 +242,111 @@ namespace sistema_escolar
 
             Console.Write("\n");
 
-            Console.WriteLine("Professor excluído com sucesso!");
+            Console.WriteLine("Professor desativado com sucesso!");
 
             Console.Write("\n");
             Console.Write("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
+        }
+        public static void ViewSecretaria()
+        {
+            string opcao;
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("Interface de Secretario(a)");
+
+                Console.Write("\n");
+
+                Console.WriteLine("Insira a opção com base na ação preferida:");
+                Console.WriteLine("1 - VIZUALIZAR ALUNOS");
+                Console.WriteLine("2 - VIZUALIZAR PROFESSORES");
+                Console.WriteLine("3 - CADASTRAR ALUNO");
+                Console.WriteLine("4 - CADASTRAR PROFESSOR");
+                Console.WriteLine("5 - ATUALIZAR ALUNO");
+                Console.WriteLine("6 - ATUALIZAR PROFESSOR");
+                Console.WriteLine("7 - DESATIVAR ALUNO");
+                Console.WriteLine("8 - DESATIVAR PROFESSOR");
+                Console.WriteLine("X - VOLTAR PARA A HOME");
+
+                Console.Write("\n");
+
+                Console.Write("Informe a opção desejada: ");
+                opcao = Console.ReadLine().ToUpper();
+
+                OpcoesSecretaria(opcao);
+            } while (opcao != "X");
+        }
+        public static void OpcoesSecretaria(string opcao)
+        {
+            switch (opcao)
+            {
+                case "1":
+                    ListarAlunos();
+                    break;
+                case "2":
+                    ListarProfessores();
+                    break;
+                case "3":
+                    InserirAluno();
+                    break;
+                case "4":
+                    CadastrarProfessor();
+                    break;
+                case "5":
+                    AtualizarAluno();
+                    break;
+                case "6":
+                    AtualizarProfessor();
+                    break;
+                case "7":
+                    DesativarAluno();
+                    break;
+                case "8":
+                    DesativarProfessor();
+                    break;
+                case "x":
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void ListarAlunos()
+        {
+            Console.Clear();
+
+            Console.WriteLine("LISTAGEM DE Alunos");
+
+            Console.Write("\n");
+
+            var lista = alunos.Lista();
+
+            if (lista.Count == 0)
+            {
+                Console.Write("\n");
+
+                Console.WriteLine("Não há alunos cadastrados.");
+
+                Console.Write("\n");
+
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            else
+            {
+                foreach (var aluno in lista)
+                {
+                    Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.retornaNome()} {aluno.retornaSobrenome()}");
+                    Console.Write($" | ANO: {aluno.retornaAno()} | STATUS: {aluno.retornaStatus()}");
+                    Console.WriteLine($" | DESATIVADO: {aluno.retornaDesativado()}");
+                }
+
+                Console.Write("\n");
+
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
         }
         public static void ViewAluno()
         {
@@ -266,13 +360,8 @@ namespace sistema_escolar
                 Console.Write("\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
-                Console.WriteLine("1 - VIZUALIZAR DADOS");
-                Console.WriteLine("2 - ATUALIZAR DADOS");
-                Console.WriteLine("3 - VIZUALIZAR NOTAS");
-
-                // TO-DO: PASSAR RESPONSABILIDADES DE CRIAÇÃO, EDIÇÃO E REMOÇÃO PARA OUTRA CLASSE
-                Console.WriteLine("4 - CADASTRAR ALUNO");
-                Console.WriteLine("5 - EXCLUIR ALUNO");
+                Console.WriteLine("1 - VIZUALIZAR DADOS DE ALUNO");
+                Console.WriteLine("2 - VIZUALIZAR NOTAS DE ALUNO");
                 Console.WriteLine("X - VOLTAR PARA A HOME");
 
                 Console.Write("\n");
@@ -288,18 +377,9 @@ namespace sistema_escolar
             switch (opcao)
             {
                 case "1":
-                    VizualizarDadosAluno();
+                    ListarAluno();
                     break;
                 case "2":
-                    AtualizarAluno();
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    InserirAluno();
-                    break;
-                case "5":
-                    DesativarAluno();
                     break;
                 case "x":
                     break;
@@ -307,7 +387,7 @@ namespace sistema_escolar
                     break;
             }
         }
-        public static void VizualizarDadosAluno()
+        public static void ListarAluno()
         {
             Console.Clear();
 
@@ -327,7 +407,7 @@ namespace sistema_escolar
             Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
             Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
             Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
-            Console.WriteLine($"..........: {aluno.retornaStatus()}");
+            Console.WriteLine($"STATUS....: {aluno.retornaStatus()}");
             Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
 
             Console.Write("\n");
@@ -427,7 +507,7 @@ namespace sistema_escolar
         {
             Console.Clear();
 
-            Console.WriteLine("EXCLUIR ALUNO");
+            Console.WriteLine("DESATIVAR ALUNO");
 
             Console.Write("\n");
 
@@ -438,7 +518,7 @@ namespace sistema_escolar
 
             Console.Write("\n");
 
-            Console.WriteLine("Aluno excluído com sucesso!");
+            Console.WriteLine("Aluno desativado com sucesso!");
 
             Console.Write("\n");
             Console.Write("Pressione qualquer tecla para continuar...");
