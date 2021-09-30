@@ -10,25 +10,25 @@ namespace sistema_escolar.Classes.Repositorios
         {
             listaProfessor[id] = professor;
         }
-
         public void Inserir(Professor professor)
         {
             listaProfessor.Add(professor);
         }
-
         public List<Professor> Lista()
         {
             return listaProfessor;
         }
-
         public int ProximoId()
         {
             return listaProfessor.Count;
         }
-
         public Professor RetornaPorId(int id)
         {
             return listaProfessor[id];
+        }
+        public void Desativa(int id)
+        {
+            listaProfessor[id].Desativar();
         }
     }
 }

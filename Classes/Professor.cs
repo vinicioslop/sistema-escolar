@@ -11,8 +11,8 @@ namespace sistema_escolar
             this.Sobrenome = sobrenome;
             this.CPF = cpf;
             this.Disciplina = disciplina;
+            this.Desativado = false;
         }
-
         public string retornaNome()
         {
             return this.Nome;
@@ -24,6 +24,14 @@ namespace sistema_escolar
         public Disciplina retornaDisciplina()
         {
             return this.Disciplina;
+        }
+        public bool retornaDesativado()
+        {
+            return this.Desativado;
+        }
+        public void Desativar()
+        {
+            this.Desativado = true;
         }
     }
 }

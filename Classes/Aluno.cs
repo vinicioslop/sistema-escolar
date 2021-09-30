@@ -15,6 +15,7 @@ namespace sistema_escolar
             this.Ano = ano;
             this.Nota = nota;
             this.Status = status;
+            this.Desativado = false;
         }
 
         public string retornaNome()
@@ -36,6 +37,14 @@ namespace sistema_escolar
         public Status retornaStatus()
         {
             return this.Status;
+        }
+        public bool retornaDesativado()
+        {
+            return this.Desativado;
+        }
+        public void Desativar()
+        {
+            this.Desativado = true;
         }
     }
 }
