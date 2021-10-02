@@ -10,23 +10,29 @@ Foi solicitado para a nossa empresa realizar o desenvolvimento de um sistema sim
 
 ## Abragência do Sistema
 
+Legenda:
+- 💻 A fazer ou implementar
+- ✅ Finalizado ou estruturado
+
 O sistema precisa:
 
 Funcionalidade | Status
-:--------------|:------------
-Realizar o cadastro dos alunos matriculados na escola | ✔ FALTA VALIDAÇÃO
-Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✔ FALTA VALIDAÇÃO
-Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✔
-Realizar o cadastro das disciplinas que são lecionadas na escola | ✔
-O sistema precisa vincular as matérias que cada professor leciona | ✔
-O sistema precisa aceitar as notas de cada aluno | 💻 TO-DO
-O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻 TO-DO
-O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻 TO-DO
-O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | 💻 TO-DO
+:--------------|:------------:
+Realizar o cadastro dos alunos matriculados na escola | ✅
+Realizar o cadastro dos funcionários da escola (Professor, diretor...) | ✅
+Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅
+Realizar o cadastro das disciplinas que são lecionadas na escola | ✅
+O sistema precisa vincular a matéria que cada professor leciona | ✅
+O sistema precisa aceitar as notas de cada aluno | 💻
+O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻
+O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻
+O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | 💻
 
 ### Funcionalidade Opcionais
 
 Funcionalidade | Status
-:--------------|:-------
-O sistema pode aceitar as presenças dos alunos por dia | 💻 TO-DO
-O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻 TO-DO
+:--------------|:------------:
+O sistema pode validar os dados digitados pelo usuário | 💻
+O sistema pode aceitar as presenças dos alunos por dia | 💻
+O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻
+O sistema poderá permitir que o professor lecione mais de uma matéria | 💻
