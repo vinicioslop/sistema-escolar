@@ -88,6 +88,7 @@ namespace sistema_escolar
                     ListarProfessores();
                     break;
                 case "2":
+                InserirNota();
                     break;
                 case "3":
                     ListarAlunos();
