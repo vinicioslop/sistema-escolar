@@ -259,6 +259,12 @@ namespace sistema_escolar
 
             repositorio.AtualizarAluno();
         }
+        public static void InserirNota()
+        {
+            MetodosProfessor metodosProfessor = new MetodosProfessor();
+
+            metodosProfessor.InserirNota();
+        }
         public static void DesativarAluno()
         {
             MetodosAluno repositorio = new MetodosAluno();
