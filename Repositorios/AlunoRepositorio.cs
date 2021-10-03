@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using sistema_escolar.Interfaces;
 
-namespace sistema_escolar.Classes.Repositorios
+namespace sistema_escolar.Repositorios
 {
     public class AlunoRepositorio : IRepositorio<Aluno>
     {

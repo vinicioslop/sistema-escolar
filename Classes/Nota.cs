@@ -2,7 +2,7 @@ namespace sistema_escolar
 {
     public class Nota
     {
-        private int IdAluno { get; set; }
+        public int IdAluno { get; set; }
         private Disciplina Disciplina { get; set; }
         public double PrimeiraNota { get; set; }
         public double SegundaNota { get; set; }
