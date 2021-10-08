@@ -20,10 +20,10 @@ Funcionalidade | Status       |Observações
 :--------------|:------------:|:----------
 Realizar o cadastro dos alunos matriculados na escola | ✅ | OK
 Realizar o cadastro de professor e secretária | ✅ | Falta estruturar alguns pontos, como pensar na lógica da secretária
-Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅
-Realizar o cadastro das disciplinas que são lecionadas na escola | ✅
-O sistema precisa vincular a matéria que cada professor leciona | ✅
-O sistema precisa aceitar as notas de cada aluno | ✅ | Criar lógica para ao inserir nova nota atualize uma já existente
+Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅ | OK
+Realizar o cadastro das disciplinas que são lecionadas na escola | ✅ | OK
+O sistema precisa vincular a matéria que cada professor leciona | ✅ | OK
+O sistema precisa aceitar as notas de cada aluno | ✅ | Verificar erro após a leitura de disciplina pelo programa
 O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻
 O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻
 O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | 💻
