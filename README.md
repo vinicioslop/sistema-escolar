@@ -32,6 +32,7 @@ O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSA
 
 Funcionalidade | Status
 :--------------|:------------:
+O sistema pode ser convertido em uma API Web para realização das tarefas de negocio e separar em programas diferentes a viuzalização da lógica do projeto | 💻
 O sistema pode ter um sistema de validação para definir se um usuário tem permição para realizar determinada ação | 💻
 O sistema pode validar os dados digitados pelo usuário | 💻
 O sistema pode aceitar as presenças dos alunos por dia | 💻
