@@ -15,9 +15,7 @@ namespace sistema_escolar.Views
             {
                 Console.Clear();
 
-                Console.WriteLine("Interface de Secretario(a)");
-
-                Console.Write("\n");
+                Console.WriteLine("Interface de Secretario(a)\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
                 Console.WriteLine("1 - LISTAR ALUNOS");
@@ -76,27 +74,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("LISTAGEM DE PROFESSORES");
-
-            Console.Write("\n");
+            Console.WriteLine("LISTAGEM DE PROFESSORES\n");
 
             try
             {
                 metodosProfessor.ListarProfessores();
 
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -104,23 +96,23 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
+            Console.WriteLine("CADASTRO DE PROFESSOR\n");
+
             try
             {
                 metodosProfessor.CadastrarProfessor();
 
-                Console.WriteLine("Professor cadastrado com sucesso.");
-                Console.Write("\n");
+                Console.Clear();
+
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -128,27 +120,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR");
-
-            Console.Write("\n");
+            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR\n");
 
             try
             {
                 metodosProfessor.AtualizarProfessor();
 
-                Console.WriteLine("Professor atualizado com sucesso!");
-                Console.Write("\n");
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -156,29 +142,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("DESATIVAR PROFESSOR");
-
-            Console.Write("\n");
+            Console.WriteLine("DESATIVAR PROFESSOR\n");
 
             try
             {
                 metodosProfessor.DesativarProfessor();
-
-                Console.WriteLine("Professor desativado com sucesso!");
-
-                Console.Write("\n");
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -186,27 +164,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("LISTAGEM DE ALUNOS");
-
-            Console.Write("\n");
+            Console.WriteLine("LISTAGEM DE ALUNOS\n");
 
             try
             {
                 metodosAluno.ListarAlunos();
 
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -214,29 +186,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("CADASTRO DE ALUNO");
-
-            Console.Write("\n");
+            Console.WriteLine("CADASTRO DE ALUNO\n");
 
             try
             {
                 metodosAluno.CadastrarAluno();
-
-                Console.WriteLine("Aluno cadastrado com sucesso!");
-
-                Console.Write("\n");
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
@@ -244,29 +208,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("ATUALIZAÇÃO DE ALUNO");
-
-            Console.Write("\n");
+            Console.WriteLine("ATUALIZAÇÃO DE ALUNO\n");
 
             try
             {
                 metodosAluno.AtualizarAluno();
-
-                Console.WriteLine("Professor cadastrado com sucesso!");
-
-                Console.Write("\n");
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
 
             }
@@ -275,29 +231,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("DESATIVAÇÃO DE ALUNO");
-
-            Console.Write("\n");
+            Console.WriteLine("DESATIVAÇÃO DE ALUNO\n");
 
             try
             {
                 metodosAluno.DesativarAluno();
-
-                Console.WriteLine("Aluno desativado com sucesso!");
-
-                Console.Write("\n");
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }

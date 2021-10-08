@@ -31,6 +31,8 @@ namespace sistema_escolar
                 case 4:
                     this.QuartaNota = nota;
                     break;
+                default:
+                    break;
             }
         }
         public double retornaPrimeiraNota()
@@ -43,11 +45,11 @@ namespace sistema_escolar
         }
         public double retornaTerceiraNota()
         {
-            return this.PrimeiraNota;
+            return this.TerceiraNota;
         }
         public double retornaQuartaNota()
         {
-            return this.PrimeiraNota;
+            return this.QuartaNota;
         }
         public double retornaMedia()
         {

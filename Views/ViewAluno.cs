@@ -13,9 +13,7 @@ namespace sistema_escolar.Views
             {
                 Console.Clear();
 
-                Console.WriteLine("Interface de Aluno");
-
-                Console.Write("\n");
+                Console.WriteLine("Interface de Aluno\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
                 Console.WriteLine("1 - VIZUALIZAR DADOS DE ALUNO");
@@ -49,27 +47,21 @@ namespace sistema_escolar.Views
         {
             Console.Clear();
 
-            Console.WriteLine("LISTAGEM DE ALUNO");
-
-            Console.Write("\n");
+            Console.WriteLine("LISTAGEM DE ALUNO\n");
 
             try
             {
                 metodosAluno.ListarAluno();
 
-                Console.Write("\n");
-
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.");
-                Console.Write("\n");
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
 
-                Console.Write("\n");
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
         }
