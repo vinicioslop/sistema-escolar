@@ -19,7 +19,7 @@ O sistema precisa:
 Funcionalidade | Status       |Observações
 :--------------|:------------:|:----------
 Realizar o cadastro dos alunos matriculados na escola | ✅ | OK
-Realizar o cadastro de professor e secretária | ✅ | Falta estruturar alguns pontos, como pensar na lógica da secretária
+Realizar o cadastro de professor | ✅ | OK
 Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅ | OK
 Realizar o cadastro das disciplinas que são lecionadas na escola | ✅ | OK
 O sistema precisa vincular a matéria que cada professor leciona | ✅ | OK
@@ -32,6 +32,7 @@ O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSA
 
 Funcionalidade | Status
 :--------------|:------------:
+O sistema pode ter um sistema de validação para definir se um usuário tem permição para realizar determinada ação | 💻
 O sistema pode validar os dados digitados pelo usuário | 💻
 O sistema pode aceitar as presenças dos alunos por dia | 💻
 O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻
