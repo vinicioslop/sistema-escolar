@@ -15,25 +15,9 @@ namespace sistema_escolar
             this.IdAluno = id;
             this.Disciplina = disciplina;
         }
-        public void InserirNota(int opcao, double nota)
+        public Disciplina retornaDisciplina()
         {
-            switch (opcao)
-            {
-                case 1:
-                    this.PrimeiraNota = nota;
-                    break;
-                case 2:
-                    this.SegundaNota = nota;
-                    break;
-                case 3:
-                    this.TerceiraNota = nota;
-                    break;
-                case 4:
-                    this.QuartaNota = nota;
-                    break;
-                default:
-                    break;
-            }
+            return this.Disciplina;
         }
         public double retornaPrimeiraNota()
         {

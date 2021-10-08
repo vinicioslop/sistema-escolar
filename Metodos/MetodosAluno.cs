@@ -7,6 +7,7 @@ namespace sistema_escolar.Metodos
     {
         static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         static NotaRepositorio repositorioNotas = new NotaRepositorio();
+        MetodosProfessor metodosProfessor = new MetodosProfessor();
         public void CadastrarAluno()
         {
             Console.Clear();
@@ -124,35 +125,40 @@ namespace sistema_escolar.Metodos
                 var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
 
                 Console.WriteLine($"NOME...: {aluno.retornaNome()}");
-                Console.WriteLine($"1° NOTA: {n.retornaPrimeiraNota()} | ");
-                Console.WriteLine($"2° NOTA: {n.retornaSegundaNota()} | ");
-                Console.WriteLine($"3° NOTA: {n.retornaTerceiraNota()} | ");
-                Console.WriteLine($"4° NOTA: {n.retornaQuartaNota()} | ");
-                Console.WriteLine($"MÉDIA..: {n.retornaMedia()} | ");
+                Console.Write($"1° NOTA: {n.retornaPrimeiraNota()} | ");
+                Console.Write($"2° NOTA: {n.retornaSegundaNota()} | ");
+                Console.Write($"3° NOTA: {n.retornaTerceiraNota()} | ");
+                Console.Write($"4° NOTA: {n.retornaQuartaNota()} | ");
+                Console.WriteLine($"MÉDIA..: {n.retornaMedia()}\n");
             }
         }
         public void InserirNota()
         {
-            Console.Write("Informe o ID do aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            //MetodosProfessor metodosProfessor = new MetodosProfessor();
 
-            if (repositorioAlunos.RetornaPorId(idE) == null)
+            Console.Write("Informe o ID do aluno: ");
+            int idAluno = Convert.ToInt32(Console.ReadLine());
+
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
 
-            Nota nota = criaNota(idE);
-
-            repositorioNotas.Inserir(nota);
-        }
-        public Nota criaNota(int id)
-        {
             Console.WriteLine("\nInforme a disciplina: ");
-
-            MetodosProfessor metodosProfessor = new MetodosProfessor();
 
             metodosProfessor.ExibeDisciplinas();
 
             int disciplina = Convert.ToInt32(Console.ReadLine());
 
+            if (repositorioNotas.RetornaPorId(idAluno) != null)
+            {
+                PrimeiraNota(idAluno, disciplina);
+            }
+            else
+            {
+                AtualizarNota(idAluno, disciplina);
+            }
+        }
+        public Nota criaNota(int idAluno, int disciplina)
+        {
             Console.WriteLine("\nEscolha a nota a ser inserida a partir das opções abaixo");
 
             Console.WriteLine("1 - Primeira Nota");
@@ -163,24 +169,52 @@ namespace sistema_escolar.Metodos
             int opcaoNota = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("\nInsira a nota do aluno: ");
-            double notaE = Convert.ToDouble(Console.ReadLine());
+            double notaAluno = Convert.ToDouble(Console.ReadLine());
 
-            Nota nota = new Nota(id, (Disciplina)disciplina);
+            Nota nota = new Nota(idAluno, (Disciplina)disciplina);
 
-            nota.InserirNota(opcaoNota, notaE);
+            switch (opcaoNota)
+            {
+                case 1:
+                    nota.PrimeiraNota = notaAluno;
+                    break;
+                case 2:
+                    nota.SegundaNota = notaAluno;
+                    break;
+                case 3:
+                    nota.TerceiraNota = notaAluno;
+                    break;
+                case 4:
+                    nota.QuartaNota = notaAluno;
+                    break;
+                default:
+                    throw new Exception("Opção inserida é invalida!");
+            }
 
             Console.Clear();
 
             Console.WriteLine("Dados digitados:");
             Console.Write("\n");
-            Console.WriteLine($"ID........: {id}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplina)}");
-            Console.WriteLine($"NOTA......: {notaE}");
+            Console.WriteLine($"ID........: {nota.IdAluno}");
+            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), nota.retornaDisciplina())}");
+            Console.WriteLine($"NOTA......: {notaAluno}");
 
             Console.Write("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
 
             return nota;
+        }
+        public void PrimeiraNota(int idAluno, int disciplina)
+        {
+            Nota nota = criaNota(idAluno, disciplina);
+
+            repositorioNotas.Inserir(nota);
+        }
+        public void AtualizarNota(int idAluno, int disciplina)
+        {
+            Nota nota = criaNota(idAluno, disciplina);
+
+            repositorioNotas.Atualizar(idAluno, nota);
         }
         public void DesativarAluno()
         {
