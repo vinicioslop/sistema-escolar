@@ -2,6 +2,7 @@ namespace sistema_escolar
 {
     public class Nota
     {
+        public int IdNota { get; set; }
         public int IdAluno { get; set; }
         private Disciplina Disciplina { get; set; }
         public double PrimeiraNota { get; set; }
@@ -10,34 +11,19 @@ namespace sistema_escolar
         public double QuartaNota { get; set; }
         public double Media { get; set; }
 
-        public Nota(int id, Disciplina disciplina)
+        public Nota(int id, int idAluno, Disciplina disciplina)
         {
-            this.IdAluno = id;
+            this.IdNota = id;
+            this.IdAluno = idAluno;
             this.Disciplina = disciplina;
+            this.PrimeiraNota = -1;
+            this.SegundaNota = -1;
+            this.TerceiraNota = -1;
+            this.QuartaNota = -1;
         }
         public Disciplina retornaDisciplina()
         {
             return this.Disciplina;
-        }
-        public double retornaPrimeiraNota()
-        {
-            return this.PrimeiraNota;
-        }
-        public double retornaSegundaNota()
-        {
-            return this.SegundaNota;
-        }
-        public double retornaTerceiraNota()
-        {
-            return this.TerceiraNota;
-        }
-        public double retornaQuartaNota()
-        {
-            return this.QuartaNota;
-        }
-        public double retornaMedia()
-        {
-            return this.Media;
         }
     }
 }

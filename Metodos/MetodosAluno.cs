@@ -124,17 +124,17 @@ namespace sistema_escolar.Metodos
             {
                 var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
 
-                Console.WriteLine($"NOME...: {aluno.retornaNome()}");
-                Console.Write($"1° NOTA: {n.retornaPrimeiraNota()} | ");
-                Console.Write($"2° NOTA: {n.retornaSegundaNota()} | ");
-                Console.Write($"3° NOTA: {n.retornaTerceiraNota()} | ");
-                Console.Write($"4° NOTA: {n.retornaQuartaNota()} | ");
-                Console.WriteLine($"MÉDIA..: {n.retornaMedia()}\n");
+                Console.WriteLine($"NOME...: {aluno.Nome}");
+                Console.Write($"1° NOTA: {n.PrimeiraNota} | ");
+                Console.Write($"2° NOTA: {n.SegundaNota} | ");
+                Console.Write($"3° NOTA: {n.TerceiraNota} | ");
+                Console.Write($"4° NOTA: {n.QuartaNota} | ");
+                Console.WriteLine($"MÉDIA..: {n.Media}\n");
             }
         }
         public void InserirNota()
         {
-            //MetodosProfessor metodosProfessor = new MetodosProfessor();
+            var lista = repositorioNotas.Lista();
 
             Console.Write("Informe o ID do aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
@@ -142,79 +142,87 @@ namespace sistema_escolar.Metodos
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
 
-            Console.WriteLine("\nInforme a disciplina: ");
-
             metodosProfessor.ExibeDisciplinas();
 
+            Console.Write("\nInforme a disciplina: ");
             int disciplina = Convert.ToInt32(Console.ReadLine());
 
-            if (repositorioNotas.RetornaPorId(idAluno) != null)
+            foreach (var nota in lista)
             {
-                PrimeiraNota(idAluno, disciplina);
-            }
-            else
-            {
-                AtualizarNota(idAluno, disciplina);
+                if (nota.IdAluno == idAluno && nota.retornaDisciplina() == (Disciplina)disciplina)
+                {
+                    var notaE = atualizaNota(idAluno, disciplina);
+                    repositorioNotas.Atualizar(notaE.IdNota, notaE);
+                }
+                else
+                {
+                    var notaE = novaNota(idAluno, disciplina);
+                    repositorioNotas.Inserir(notaE);
+                }
             }
         }
-        public Nota criaNota(int idAluno, int disciplina)
+        public Nota novaNota(int idAluno, int disciplina)
         {
-            Console.WriteLine("\nEscolha a nota a ser inserida a partir das opções abaixo");
+            Console.Write("Informe a nota do aluno: ");
+            double notaEntrada = Convert.ToDouble(Console.ReadLine());
+
+            Nota nota = new Nota(repositorioNotas.ProximoId(), idAluno, (Disciplina)disciplina);
+
+            nota.PrimeiraNota = notaEntrada;
+
+            return nota;
+        }
+        public Nota atualizaNota(int idAluno, int disciplina)
+        {
+            var lista = repositorioNotas.Lista();
+            int idNota = -1;
+
+            Console.WriteLine("Escolha com base nas opções\n");
 
             Console.WriteLine("1 - Primeira Nota");
             Console.WriteLine("2 - Segunda Nota");
             Console.WriteLine("3 - Terceira Nota");
             Console.WriteLine("4 - Quarta Nota");
 
-            int opcaoNota = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Informe a opção desejada: ");
+            int opcao = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\nInsira a nota do aluno: ");
-            double notaAluno = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Informe a nota do aluno: ");
+            double notaEntrada = Convert.ToDouble(Console.ReadLine());
 
-            Nota nota = new Nota(idAluno, (Disciplina)disciplina);
-
-            switch (opcaoNota)
+            foreach (var n in lista)
             {
-                case 1:
-                    nota.PrimeiraNota = notaAluno;
-                    break;
-                case 2:
-                    nota.SegundaNota = notaAluno;
-                    break;
-                case 3:
-                    nota.TerceiraNota = notaAluno;
-                    break;
-                case 4:
-                    nota.QuartaNota = notaAluno;
-                    break;
-                default:
-                    throw new Exception("Opção inserida é invalida!");
+                if (n.IdAluno == idAluno && (n.retornaDisciplina() == (Disciplina)disciplina))
+                {
+                    idNota = n.IdNota;
+                }
             }
 
-            Console.Clear();
+            if (idNota != -1)
+            {
+                Nota nota = repositorioNotas.RetornaPorId(idNota);
 
-            Console.WriteLine("Dados digitados:");
-            Console.Write("\n");
-            Console.WriteLine($"ID........: {nota.IdAluno}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), nota.retornaDisciplina())}");
-            Console.WriteLine($"NOTA......: {notaAluno}");
-
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
-
-            return nota;
-        }
-        public void PrimeiraNota(int idAluno, int disciplina)
-        {
-            Nota nota = criaNota(idAluno, disciplina);
-
-            repositorioNotas.Inserir(nota);
-        }
-        public void AtualizarNota(int idAluno, int disciplina)
-        {
-            Nota nota = criaNota(idAluno, disciplina);
-
-            repositorioNotas.Atualizar(idAluno, nota);
+                switch (opcao)
+                {
+                    case 1:
+                        nota.PrimeiraNota = notaEntrada;
+                        break;
+                    case 2:
+                        nota.SegundaNota = notaEntrada;
+                        break;
+                    case 3:
+                        nota.TerceiraNota = notaEntrada;
+                        break;
+                    case 4:
+                        nota.QuartaNota = notaEntrada;
+                        break;
+                }
+                return nota;
+            }
+            else
+            {
+                throw new Exception("Não há nota existente neste aluno com esta disciplina.");
+            }
         }
         public void DesativarAluno()
         {
