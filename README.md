@@ -12,6 +12,7 @@ Foi solicitado para a nossa empresa realizar o desenvolvimento de um sistema sim
 
 Legenda:
 - 💻 A fazer ou implementar
+- ⁉ Analisar e refazer utilizando outra lógica
 - ✅ Finalizado ou estruturado
 
 O sistema precisa:
@@ -23,7 +24,7 @@ Realizar o cadastro de professor | ✅ | OK
 Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅ | OK
 Realizar o cadastro das disciplinas que são lecionadas na escola | ✅ | OK
 O sistema precisa vincular a matéria que cada professor leciona | ✅ | OK
-O sistema precisa aceitar as notas de cada aluno | ✅ | Verificar o porque do metodo ser pulado ao ser chamado
+O sistema precisa aceitar as notas de cada aluno | ⁉ | Repensar e refazer a lógica de inserção e manipulação de notas
 O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻
 O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻
 O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | 💻
