@@ -13,14 +13,12 @@ namespace sistema_escolar.Views
             {
                 Console.Clear();
 
-                Console.WriteLine("Interface de Aluno\n");
+                Console.WriteLine("INTERFACE DO ALUNO\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
-                Console.WriteLine("1 - VIZUALIZAR DADOS DE ALUNO");
-                Console.WriteLine("2 - VIZUALIZAR NOTAS DE ALUNO");
-                Console.WriteLine("X - VOLTAR PARA A HOME");
-
-                Console.Write("\n");
+                Console.WriteLine("1 - VIZUALIZAR DADOS DO ALUNO");
+                Console.WriteLine("2 - VIZUALIZAR NOTAS DO ALUNO");
+                Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
                 Console.Write("Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
@@ -52,6 +50,29 @@ namespace sistema_escolar.Views
             try
             {
                 metodosAluno.ListarAluno();
+
+                Console.Write("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        public void listarNota()
+        {
+            Console.Clear();
+
+            Console.WriteLine("LISTAGEM DE NOTA\n");
+
+            try
+            {
+                Console.WriteLine("A implementar...");
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();

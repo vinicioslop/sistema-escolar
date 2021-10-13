@@ -34,11 +34,10 @@ namespace sistema_escolar.Metodos
 
             Console.Write("\n");
 
-            Console.WriteLine($"NOME......: {aluno.retornaNome()} {aluno.retornaNome()}");
-            Console.WriteLine($"CPF.......: {aluno.retornaCPF()}");
-            Console.WriteLine($"ANO.......: {aluno.retornaAno()}");
-            Console.WriteLine($"STATUS....: {aluno.retornaStatus()}");
-            Console.WriteLine($"DESATIVADO: {aluno.retornaDesativado()}");
+            Console.WriteLine($"NOME......: {aluno.Nome} {aluno.Sobrenome}");
+            Console.WriteLine($"CPF.......: {aluno.CPF}");
+            Console.WriteLine($"ANO.......: {aluno.Ano}");
+            Console.WriteLine($"STATUS....: {aluno.Status}");
         }
         public void ListarAlunos()
         {
@@ -46,9 +45,8 @@ namespace sistema_escolar.Metodos
 
             foreach (var aluno in lista)
             {
-                Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.retornaNome()} {aluno.retornaSobrenome()}");
-                Console.Write($" | ANO: {aluno.retornaAno()} | STATUS: {aluno.retornaStatus()}");
-                Console.WriteLine($" | DESATIVADO: {aluno.retornaDesativado()}");
+                Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.Nome} {aluno.Sobrenome}");
+                Console.WriteLine($" | ANO: {aluno.Ano} | STATUS: {aluno.Status}");
             }
 
             if (lista.Count == 0)
@@ -125,114 +123,19 @@ namespace sistema_escolar.Metodos
                 var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
 
                 Console.WriteLine($"NOME...: {aluno.Nome}");
-                Console.Write($"1° NOTA: {n.PrimeiraNota} | ");
-                Console.Write($"2° NOTA: {n.SegundaNota} | ");
-                Console.Write($"3° NOTA: {n.TerceiraNota} | ");
-                Console.Write($"4° NOTA: {n.QuartaNota} | ");
+                Console.Write($"1° NOTA: {n.PriNota} | ");
+                Console.Write($"2° NOTA: {n.SegNota} | ");
+                Console.Write($"3° NOTA: {n.TerNota} | ");
+                Console.Write($"4° NOTA: {n.QuaNota} | ");
                 Console.WriteLine($"MÉDIA..: {n.Media}\n");
             }
         }
         public void InserirNota()
         {
-            var lista = repositorioNotas.Lista();
+            Console.WriteLine("A implementar...");
 
-            Console.Write("Informe o ID do aluno: ");
-            int idAluno = Convert.ToInt32(Console.ReadLine());
-
-            if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
-
-            metodosProfessor.ExibeDisciplinas();
-
-            Console.Write("\nInforme a disciplina: ");
-            int disciplina = Convert.ToInt32(Console.ReadLine());
-
-            foreach (var nota in lista)
-            {
-                if (nota.IdAluno == idAluno && nota.retornaDisciplina() == (Disciplina)disciplina)
-                {
-                    var notaE = atualizaNota(idAluno, disciplina);
-                    repositorioNotas.Atualizar(notaE.IdNota, notaE);
-                }
-                else
-                {
-                    var notaE = novaNota(idAluno, disciplina);
-                    repositorioNotas.Inserir(notaE);
-                }
-            }
-        }
-        public Nota novaNota(int idAluno, int disciplina)
-        {
-            Console.Write("Informe a nota do aluno: ");
-            double notaEntrada = Convert.ToDouble(Console.ReadLine());
-
-            Nota nota = new Nota(repositorioNotas.ProximoId(), idAluno, (Disciplina)disciplina);
-
-            nota.PrimeiraNota = notaEntrada;
-
-            return nota;
-        }
-        public Nota atualizaNota(int idAluno, int disciplina)
-        {
-            var lista = repositorioNotas.Lista();
-            int idNota = -1;
-
-            Console.WriteLine("Escolha com base nas opções\n");
-
-            Console.WriteLine("1 - Primeira Nota");
-            Console.WriteLine("2 - Segunda Nota");
-            Console.WriteLine("3 - Terceira Nota");
-            Console.WriteLine("4 - Quarta Nota");
-
-            Console.Write("Informe a opção desejada: ");
-            int opcao = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Informe a nota do aluno: ");
-            double notaEntrada = Convert.ToDouble(Console.ReadLine());
-
-            foreach (var n in lista)
-            {
-                if (n.IdAluno == idAluno && (n.retornaDisciplina() == (Disciplina)disciplina))
-                {
-                    idNota = n.IdNota;
-                }
-            }
-
-            if (idNota != -1)
-            {
-                Nota nota = repositorioNotas.RetornaPorId(idNota);
-
-                switch (opcao)
-                {
-                    case 1:
-                        nota.PrimeiraNota = notaEntrada;
-                        break;
-                    case 2:
-                        nota.SegundaNota = notaEntrada;
-                        break;
-                    case 3:
-                        nota.TerceiraNota = notaEntrada;
-                        break;
-                    case 4:
-                        nota.QuartaNota = notaEntrada;
-                        break;
-                }
-                return nota;
-            }
-            else
-            {
-                throw new Exception("Não há nota existente neste aluno com esta disciplina.");
-            }
-        }
-        public void DesativarAluno()
-        {
-            Console.Write("Informe o ID do aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            if (repositorioAlunos.RetornaPorId(idE) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
-
-            repositorioAlunos.Desativa(idE);
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

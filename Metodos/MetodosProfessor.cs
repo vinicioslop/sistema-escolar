@@ -15,8 +15,8 @@ namespace sistema_escolar.Metodos
 
             foreach (var professor in lista)
             {
-                Console.Write($"ID: {professor.Id} | NOME: {professor.retornaNome()} {professor.retornaSobrenome()}");
-                Console.WriteLine($" | DISCIPLINA: {professor.retornaDisciplina()} | DESATIVADO: {professor.retornaDesativado()}");
+                Console.Write($"ID: {professor.Id} | NOME: {professor.Nome} {professor.Sobrenome}");
+                Console.WriteLine($" | DISCIPLINA: {professor.Disciplina}");
             }
 
             if (lista.Count == 0)
@@ -38,10 +38,9 @@ namespace sistema_escolar.Metodos
 
             Console.WriteLine("DADOS NO SISTEMA\n");
 
-            Console.WriteLine($"NOME......: {professor.retornaNome()} {professor.retornaNome()}");
-            Console.WriteLine($"CPF.......: {professor.retornaCPF()}");
-            Console.WriteLine($"DISCIPLINA: {professor.retornaDisciplina()}");
-            Console.WriteLine($"DESATIVADO: {professor.retornaDesativado()}");
+            Console.WriteLine($"NOME......: {professor.Nome} {professor.Sobrenome}");
+            Console.WriteLine($"CPF.......: {professor.CPF}");
+            Console.WriteLine($"DISCIPLINA: {professor.Disciplina}");
         }
         public void CadastrarProfessor()
         {
@@ -107,16 +106,6 @@ namespace sistema_escolar.Metodos
                 cpf: cpfE,
                 disciplina: (Disciplina)disciplinaE
             );
-        }
-        public void DesativarProfessor()
-        {
-            Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
-
-            if (repositorioProfessores.RetornaPorId(idE) == null)
-                throw new Exception("Não há professor cadastrado com este ID.");
-
-            repositorioProfessores.Desativa(idE);
         }
     }
 }

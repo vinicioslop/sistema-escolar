@@ -27,9 +27,5 @@ namespace sistema_escolar.Repositorios
         {
             return listaAluno[id];
         }
-        public void Desativa(int id)
-        {
-            listaAluno[id].Desativar();
-        }
     }
 }

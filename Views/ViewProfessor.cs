@@ -15,7 +15,7 @@ namespace sistema_escolar.Views
             {
                 Console.Clear();
 
-                Console.WriteLine("Interface de Professor\n");
+                Console.WriteLine("INTERFACE DO PROFESSOR\n");
 
                 Console.WriteLine("Insira a opção com base na ação preferida:");
                 Console.WriteLine("1 - LISTAR ALUNOS");
@@ -23,9 +23,7 @@ namespace sistema_escolar.Views
                 Console.WriteLine("3 - LISTAR NOTAS");
                 Console.WriteLine("4 - INSERÇÃO DE NOTA DE ALUNO");
                 Console.WriteLine("5 - ALTERAR STATUS DE ALUNO");
-                Console.WriteLine("X - VOLTAR PARA A HOME");
-
-                Console.Write("\n");
+                Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
                 Console.Write("Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
@@ -125,27 +123,10 @@ namespace sistema_escolar.Views
         }
         public void inserirNota()
         {
-            Console.Clear();
+            Console.WriteLine("A implementar....");
 
-            Console.WriteLine("INSERÇÃO DE NOTA\n");
-
-            try
-            {
-                metodosAluno.InserirNota();
-
-                Console.WriteLine("\nNota inserida com sucesso.");
-                
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

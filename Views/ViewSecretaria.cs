@@ -24,11 +24,8 @@ namespace sistema_escolar.Views
                 Console.WriteLine("4 - CADASTRAR PROFESSOR");
                 Console.WriteLine("5 - ATUALIZAR ALUNO");
                 Console.WriteLine("6 - ATUALIZAR PROFESSOR");
-                Console.WriteLine("7 - DESATIVAR ALUNO");
-                Console.WriteLine("8 - DESATIVAR PROFESSOR");
-                Console.WriteLine("X - VOLTAR PARA A HOME");
-
-                Console.Write("\n");
+                Console.WriteLine("7 - ALTERAR STATUS DO ALUNO");
+                Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
                 Console.Write("Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
@@ -59,10 +56,7 @@ namespace sistema_escolar.Views
                     atualizarProfessor();
                     break;
                 case "7":
-                    desativarAluno();
-                    break;
-                case "8":
-                    desativarProfessor();
+                    // TO DO
                     break;
                 case "x":
                     break;
@@ -125,28 +119,6 @@ namespace sistema_escolar.Views
             try
             {
                 metodosProfessor.AtualizarProfessor();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-        }
-        public void desativarProfessor()
-        {
-            Console.Clear();
-
-            Console.WriteLine("DESATIVAR PROFESSOR\n");
-
-            try
-            {
-                metodosProfessor.DesativarProfessor();
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
@@ -225,28 +197,6 @@ namespace sistema_escolar.Views
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
 
-            }
-        }
-        public void desativarAluno()
-        {
-            Console.Clear();
-
-            Console.WriteLine("DESATIVAÇÃO DE ALUNO\n");
-
-            try
-            {
-                metodosAluno.DesativarAluno();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
         }
     }
