@@ -21,29 +21,25 @@ namespace sistema_escolar
                 Console.Clear();
 
                 Console.WriteLine("Bem-vindo ao Sistema Escolar Simplficado");
-                Console.WriteLine("da Escola Estadual de Algum Lugar!");
-
-                Console.Write("\n");
+                Console.WriteLine("da Escola Estadual de Algum Lugar!\n");
 
                 Console.WriteLine("Insira a opção com base no tipo de acesso preferido:");
                 Console.WriteLine("1 - SECRETARIA");
                 Console.WriteLine("2 - PROFESSOR");
                 Console.WriteLine("3 - ALUNO");
                 Console.WriteLine("0 - INICIAR DADOS MOCKADOS");
-                Console.WriteLine("X - SAIR");
-
-                Console.Write("\n");
+                Console.WriteLine("X - SAIR\n");
 
                 Console.Write("Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
+
+                Console.Write("\n");
 
                 Opcoes(opcao);
             } while (opcao != "X");
         }
         public static void Opcoes(string opcao)
         {
-            Console.Write("\n");
-
             switch (opcao)
             {
                 case "1":

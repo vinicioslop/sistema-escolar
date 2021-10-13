@@ -55,18 +55,14 @@ namespace sistema_escolar.Metodos
         public void ListarAluno()
         {
             Console.Write("Insira o seu ID: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            int idAluno = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\n");
-
-            if (repositorioAlunos.RetornaPorId(idE) == null)
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
 
-            Aluno aluno = repositorioAlunos.RetornaPorId(idE);
+            Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
 
-            Console.WriteLine("DADOS NO SISTEMA");
-
-            Console.Write("\n");
+            Console.WriteLine("\nDADOS NO SISTEMA\n");
 
             Console.WriteLine($"NOME......: {aluno.Nome} {aluno.Sobrenome}");
             Console.WriteLine($"CPF.......: {aluno.CPF}");
@@ -136,14 +132,23 @@ namespace sistema_escolar.Metodos
         public void AtualizarAluno()
         {
             Console.Write("Informe o ID do Aluno: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            int idAluno = Convert.ToInt32(Console.ReadLine());
 
-            if (repositorioAlunos.RetornaPorId(idE) == null)
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
+
+            var alunoSistema = repositorioAlunos.RetornaPorId(idAluno);
+
+            Console.WriteLine("\nDADOS NO SISTEMA\n");
+
+            Console.WriteLine($"NOME......: {alunoSistema.Nome}");
+            Console.WriteLine($"SOBRENOME.: {alunoSistema.Sobrenome}");
+            Console.WriteLine($"CPF.......: {alunoSistema.CPF}");
+            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), alunoSistema.Ano)}\n");
 
             Aluno aluno = criaAluno();
 
-            repositorioAlunos.Atualizar(idE, aluno);
+            repositorioAlunos.Atualizar(idAluno, aluno);
         }
         public void ListarNotas()
         {

@@ -88,14 +88,23 @@ namespace sistema_escolar.Metodos
         public void AtualizarProfessor()
         {
             Console.Write("Informe o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            int idProfessor = Convert.ToInt32(Console.ReadLine());
 
-            if (repositorioProfessores.RetornaPorId(idE) == null)
+            if (repositorioProfessores.RetornaPorId(idProfessor) == null)
                 throw new Exception("Não há professor cadastrado com este ID.");
+
+            var professorSistema = repositorioProfessores.RetornaPorId(idProfessor);
+
+            Console.WriteLine("DADOS INSERIDOS\n");
+
+            Console.WriteLine($"NOME......: {professorSistema.Nome}");
+            Console.WriteLine($"SOBRENOME.: {professorSistema.Sobrenome}");
+            Console.WriteLine($"CPF.......: {professorSistema.CPF}");
+            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), professorSistema.Disciplina)}\n");
 
             Professor professor = criaProfessor();
 
-            repositorioProfessores.Atualizar(idE, professor);
+            repositorioProfessores.Atualizar(idProfessor, professor);
         }
         public Professor criaProfessor()
         {
