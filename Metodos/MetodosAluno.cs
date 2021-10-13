@@ -8,6 +8,40 @@ namespace sistema_escolar.Metodos
         static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         static NotaRepositorio repositorioNotas = new NotaRepositorio();
         MetodosProfessor metodosProfessor = new MetodosProfessor();
+        public void IniciaAlunosMockados()
+        {
+            // DADOS MOCKADOS DE ALUNOS
+            repositorioAlunos.Inserir(new Aluno(
+                repositorioAlunos.ProximoId(),
+                "Marcos", "Antonio",
+                "12345678901",
+                (Ano)1)
+            );
+            repositorioAlunos.Inserir(new Aluno(
+                repositorioAlunos.ProximoId(),
+                "José", "Carlos",
+                "09876543210",
+                (Ano)2)
+            );
+            repositorioAlunos.Inserir(new Aluno(
+                repositorioAlunos.ProximoId(),
+                "Ana", "Carla",
+                "62548746112",
+                (Ano)3)
+            );
+            repositorioAlunos.Inserir(new Aluno(
+                repositorioAlunos.ProximoId(),
+                "Julia", "Cristina",
+                "26545654612",
+                (Ano)4)
+            );
+            repositorioAlunos.Inserir(new Aluno(
+                repositorioAlunos.ProximoId(),
+                "Ana", "Beatriz",
+                "21473365112",
+                (Ano)5)
+            );
+        }
         public void CadastrarAluno()
         {
             Console.Clear();
@@ -142,9 +176,9 @@ namespace sistema_escolar.Metodos
             Console.Write("Informe o ID do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
-            if(repositorioAlunos.RetornaPorId(idAluno) == null)
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
-            
+
             Console.WriteLine("\nSITUAÇÃO\n");
 
             foreach (int i in Enum.GetValues(typeof(Status)))

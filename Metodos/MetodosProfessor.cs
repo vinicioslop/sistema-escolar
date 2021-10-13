@@ -6,9 +6,33 @@ namespace sistema_escolar.Metodos
     public class MetodosProfessor
     {
         public static ProfessorRepositorio repositorioProfessores = new ProfessorRepositorio();
-        public static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         public static NotaRepositorio repositorioNotas = new NotaRepositorio();
 
+        public void IniciaProfessoresMockados()
+        {
+            // DADOS MOCKADOS DE ALUNOS
+            repositorioProfessores.Inserir(new Professor(
+                repositorioProfessores.ProximoId(),
+                "Anderson",
+                "Santos",
+                "14115515112",
+                (Disciplina)1)
+            );
+            repositorioProfessores.Inserir(new Professor(
+                repositorioProfessores.ProximoId(),
+                "Victor",
+                "Lopes",
+                "134141366346",
+                (Disciplina)4)
+            );
+            repositorioProfessores.Inserir(new Professor(
+                repositorioProfessores.ProximoId(),
+                "José",
+                "Ferreira",
+                "99999999999",
+                (Disciplina)3)
+            );
+        }
         public void ListarProfessores()
         {
             var lista = repositorioProfessores.Lista();

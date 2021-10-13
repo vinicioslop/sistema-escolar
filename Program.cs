@@ -9,6 +9,10 @@ namespace sistema_escolar
         public static ViewSecretaria viewSecretaria = new ViewSecretaria();
         public static ViewProfessor viewProfessor = new ViewProfessor();
         public static ViewAluno viewAluno = new ViewAluno();
+
+        // APAGAR DEPOIS SE NECESSARIO
+        public static MetodosProfessor metodosProfessor = new MetodosProfessor();
+        public static MetodosAluno metodosAluno = new MetodosAluno();
         static void Main(string[] args)
         {
             string opcao;
@@ -25,6 +29,7 @@ namespace sistema_escolar
                 Console.WriteLine("1 - SECRETARIA");
                 Console.WriteLine("2 - PROFESSOR");
                 Console.WriteLine("3 - ALUNO");
+                Console.WriteLine("0 - INICIAR DADOS MOCKADOS");
                 Console.WriteLine("X - SAIR");
 
                 Console.Write("\n");
@@ -49,6 +54,10 @@ namespace sistema_escolar
                     break;
                 case "3":
                     viewAluno.HomeAluno();
+                    break;
+                case "0":
+                    metodosAluno.IniciaAlunosMockados();
+                    metodosProfessor.IniciaProfessoresMockados();
                     break;
                 case "X":
                     break;
