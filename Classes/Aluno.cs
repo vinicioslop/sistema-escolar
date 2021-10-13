@@ -18,5 +18,9 @@ namespace sistema_escolar
         {
             return this.Id;
         }
+        public void alteraStatus(int status)
+        {
+            this.Status = (Status)status;
+        }
     }
 }

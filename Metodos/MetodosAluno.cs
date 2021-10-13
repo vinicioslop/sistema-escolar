@@ -137,5 +137,31 @@ namespace sistema_escolar.Metodos
             Console.Write("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
+        public void AlteraStatus()
+        {
+            Console.Write("Informe o ID do Aluno: ");
+            int idAluno = Convert.ToInt32(Console.ReadLine());
+
+            if(repositorioAlunos.RetornaPorId(idAluno) == null)
+                throw new Exception("Não há aluno cadastrado com este ID.");
+            
+            Console.WriteLine("\nSITUAÇÃO\n");
+
+            foreach (int i in Enum.GetValues(typeof(Status)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Status), i));
+            }
+
+            Console.Write("\n");
+
+            Console.Write("Informe a Situação desejada: ");
+            int status = Convert.ToInt32(Console.ReadLine());
+
+            var aluno = repositorioAlunos.RetornaPorId(idAluno);
+
+            aluno.alteraStatus(status);
+
+            Console.WriteLine("Status alterado com sucesso.");
+        }
     }
 }
