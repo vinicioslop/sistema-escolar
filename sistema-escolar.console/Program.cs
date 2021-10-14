@@ -53,6 +53,7 @@ namespace sistema_escolar.console
                     break;
                 case "0":
                     metodosAluno.IniciaAlunosMockados();
+                    metodosAluno.IniciaNotasMockadas();
                     metodosProfessor.IniciaProfessoresMockados();
                     break;
                 case "X":

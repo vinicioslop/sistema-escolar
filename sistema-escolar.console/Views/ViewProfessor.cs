@@ -124,10 +124,26 @@ namespace sistema_escolar.console.Views
         }
         public void inserirNota()
         {
-            Console.WriteLine("A implementar....");
+            Console.Clear();
 
-            Console.WriteLine("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            Console.WriteLine("INSERÇÃO DE NOTA DE ALUNO\n");
+
+            try
+            {
+                metodosAluno.InserirNota();
+
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+
+            }
         }
         public void alterarStatusAluno()
         {
