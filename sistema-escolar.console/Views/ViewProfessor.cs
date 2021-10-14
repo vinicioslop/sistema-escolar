@@ -102,10 +102,6 @@ namespace sistema_escolar.console.Views
         }
         public void listarNotas()
         {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE NOTAS\n");
-
             try
             {
                 metodosAluno.ListarNotas();

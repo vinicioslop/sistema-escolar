@@ -185,6 +185,10 @@ namespace sistema_escolar.console.Metodos
         }
         public void ListarNotas()
         {
+            Console.Clear();
+
+            Console.WriteLine("LISTAGEM DE NOTAS\n");
+            
             var listaNotas = repositorioNotas.Lista();
 
             if (listaNotas == null)
@@ -194,8 +198,8 @@ namespace sistema_escolar.console.Metodos
             {
                 var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
 
-                Console.WriteLine($"NOME...: {aluno.Nome}");
-                Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina}");
+                Console.Write($"NOME...: {aluno.Nome} | ");
+                Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {(Disciplina)n.Disciplina}");
                 Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
                 Console.WriteLine($"2° NOTA: {n.SegundaNota}");
                 Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
@@ -205,8 +209,10 @@ namespace sistema_escolar.console.Metodos
         }
         public void InserirNota()
         {
-            bool primeira = true;
-            int idNota = 0;
+            bool primeira = true, existe = false;
+            int idNota = 0, disciplina = 0;
+
+            var listaNotas = repositorioNotas.Lista();
 
             Console.Write("Informe o ID do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
@@ -214,12 +220,53 @@ namespace sistema_escolar.console.Metodos
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
 
-            Console.Write("\n");
-            metodosProfessor.ExibeDisciplinas();
-            Console.Write("\n");
+            Console.Clear();
+
+            Console.WriteLine("Deseja inserir uma nova nota?");
+
+            Console.Write("(S)im, (N)ão: ");
+            string novaNota = Console.ReadLine();
+
+            if (novaNota.ToUpper() == "S")
+            {
+                Console.Write("\n");
+                metodosProfessor.ExibeDisciplinas();
+                Console.Write("\n");
+            }
+            else
+            {
+                Console.WriteLine("Dados no Sistema\n");
+
+                foreach (var n in listaNotas)
+                {
+                    if (n.IdAluno == idAluno)
+                    {
+                        existe = true;
+                        var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
+
+                        Console.Write($"NOME...: {aluno.Nome} | ");
+                        Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {n.Disciplina}");
+                        Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
+                        Console.WriteLine($"2° NOTA: {n.SegundaNota}");
+                        Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
+                        Console.WriteLine($"4° NOTA: {n.QuartaNota}");
+                        Console.WriteLine($"MÉDIA..: {n.Media}\n");
+                    }
+                }
+
+                if (!existe)
+                {
+                    Console.WriteLine("Não há notas cadastradas para este aluno.");
+                }
+            }
 
             Console.Write("Informe a Disciplina da Nota: ");
-            int disciplina = Convert.ToInt32(Console.ReadLine());
+            disciplina = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
+
+            Console.Clear();
 
             Console.WriteLine("OPÇÕES");
             Console.WriteLine("1 - PRIMEIRA NOTA");
@@ -256,26 +303,22 @@ namespace sistema_escolar.console.Metodos
                 atualizaNota(idNota, opcao, notaInserida);
             }
 
-            Console.WriteLine("Nota inserida com sucesso.");
+            Console.WriteLine("\nNota inserida com sucesso.");
 
             Console.Write("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
         public void primeiraNota(int idAluno, int disciplina, double notaInserida)
         {
-            Console.WriteLine(repositorioNotas.ProximoId());
-            
             Nota nota = new Nota(repositorioNotas.ProximoId(), idAluno, (Disciplina)disciplina, notaInserida);
 
             repositorioNotas.Inserir(nota);
         }
         public void atualizaNota(int idNota, int opcao, double notaInserida)
         {
-            Console.WriteLine("FIRST");
-
             Nota nota = repositorioNotas.RetornaPorId(idNota);
 
-            switch(opcao)
+            switch (opcao)
             {
                 case 1:
                     nota.PrimeiraNota = notaInserida;
