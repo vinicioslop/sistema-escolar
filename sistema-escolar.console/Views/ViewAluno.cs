@@ -34,6 +34,7 @@ namespace sistema_escolar.console.Views
                     listarAluno();
                     break;
                 case "2":
+                    listarNota();
                     break;
                 case "x":
                     break;
@@ -43,10 +44,6 @@ namespace sistema_escolar.console.Views
         }
         public void listarAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE ALUNO\n");
-
             try
             {
                 metodosAluno.ListarAluno();
@@ -66,13 +63,9 @@ namespace sistema_escolar.console.Views
 
         public void listarNota()
         {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE NOTA\n");
-
             try
             {
-                Console.WriteLine("A implementar...");
+                metodosAluno.ListarNota();
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();

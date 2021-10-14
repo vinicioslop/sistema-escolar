@@ -35,6 +35,9 @@ namespace sistema_escolar.console.Metodos
         }
         public void ListarProfessores()
         {
+            Console.Clear();
+            Console.WriteLine("LISTAGEM DE PROFESSORES\n");
+
             var lista = repositorioProfessores.Lista();
 
             foreach (var professor in lista)
@@ -69,6 +72,7 @@ namespace sistema_escolar.console.Metodos
         public void CadastrarProfessor()
         {
             Console.Clear();
+            Console.WriteLine("CADASTRO DE PROFESSOR\n");
 
             Professor professor = criaProfessor();
 
@@ -87,6 +91,9 @@ namespace sistema_escolar.console.Metodos
         }
         public void AtualizarProfessor()
         {
+            Console.Clear();
+            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR\n");
+            
             Console.Write("Informe o ID do professor: ");
             int idProfessor = Convert.ToInt32(Console.ReadLine());
 

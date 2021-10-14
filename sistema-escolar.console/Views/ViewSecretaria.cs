@@ -64,34 +64,8 @@ namespace sistema_escolar.console.Views
                     break;
             }
         }
-        public void listarProfessores()
-        {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE PROFESSORES\n");
-
-            try
-            {
-                metodosProfessor.ListarProfessores();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-        }
         public void cadastrarProfessor()
         {
-            Console.Clear();
-
-            Console.WriteLine("CADASTRO DE PROFESSOR\n");
-
             try
             {
                 metodosProfessor.CadastrarProfessor();
@@ -112,10 +86,6 @@ namespace sistema_escolar.console.Views
         }
         public void atualizarProfessor()
         {
-            Console.Clear();
-
-            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR\n");
-
             try
             {
                 metodosProfessor.AtualizarProfessor();
@@ -132,15 +102,11 @@ namespace sistema_escolar.console.Views
                 Console.ReadKey();
             }
         }
-        public void listarAlunos()
+        public void listarProfessores()
         {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE ALUNOS\n");
-
             try
             {
-                metodosAluno.ListarAlunos();
+                metodosProfessor.ListarProfessores();
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
@@ -156,10 +122,6 @@ namespace sistema_escolar.console.Views
         }
         public void cadastrarAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("CADASTRO DE ALUNO\n");
-
             try
             {
                 metodosAluno.CadastrarAluno();
@@ -178,10 +140,6 @@ namespace sistema_escolar.console.Views
         }
         public void atualizarAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("ATUALIZAÇÃO DE ALUNO\n");
-
             try
             {
                 metodosAluno.AtualizarAluno();
@@ -199,12 +157,26 @@ namespace sistema_escolar.console.Views
 
             }
         }
+        public void listarAlunos()
+        {
+            try
+            {
+                metodosAluno.ListarAlunos();
+
+                Console.Write("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
+                Console.WriteLine($"Contexto: {ex.Message}");
+
+                Console.Write("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
         public void alterarStatusAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("ATUALIZAÇÃO DE STATUS DE ALUNO\n");
-
             try
             {
                 metodosAluno.AlteraStatus();

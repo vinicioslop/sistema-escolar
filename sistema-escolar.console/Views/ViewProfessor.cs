@@ -58,10 +58,6 @@ namespace sistema_escolar.console.Views
         }
         public void listarAlunos()
         {
-            Console.Clear();
-
-            Console.WriteLine("LISTAGEM DE ALUNOS\n");
-
             try
             {
                 metodosAluno.ListarAlunos();
@@ -80,10 +76,6 @@ namespace sistema_escolar.console.Views
         }
         public void listarAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("VIZUALIZAR DE ALUNO\n");
-
             try
             {
                 viewAluno.listarAluno();
@@ -120,10 +112,6 @@ namespace sistema_escolar.console.Views
         }
         public void inserirNota()
         {
-            Console.Clear();
-
-            Console.WriteLine("INSERÇÃO DE NOTA DE ALUNO\n");
-
             try
             {
                 metodosAluno.InserirNota();
@@ -143,10 +131,6 @@ namespace sistema_escolar.console.Views
         }
         public void alterarStatusAluno()
         {
-            Console.Clear();
-
-            Console.WriteLine("ATUALIZAÇÃO DE STATUS DE ALUNO\n");
-
             try
             {
                 metodosAluno.AlteraStatus();

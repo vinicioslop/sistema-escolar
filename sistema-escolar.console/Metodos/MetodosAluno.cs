@@ -78,92 +78,17 @@ namespace sistema_escolar.console.Metodos
         public void CadastrarAluno()
         {
             Console.Clear();
-
-            Console.WriteLine("CADASTRO DE ALUNO");
+            Console.WriteLine("CADASTRO DE ALUNO\n");
 
             Aluno aluno = criaAluno();
 
             repositorioAlunos.Inserir(aluno);
         }
-        public void ListarAluno()
-        {
-            Console.Write("Insira o seu ID: ");
-            int idAluno = Convert.ToInt32(Console.ReadLine());
-
-            if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
-
-            Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
-
-            Console.WriteLine("\nDADOS NO SISTEMA\n");
-
-            Console.WriteLine($"NOME......: {aluno.Nome} {aluno.Sobrenome}");
-            Console.WriteLine($"CPF.......: {aluno.CPF}");
-            Console.WriteLine($"ANO.......: {aluno.Ano}");
-            Console.WriteLine($"STATUS....: {aluno.Status}");
-        }
-        public void ListarAlunos()
-        {
-            var lista = repositorioAlunos.Lista();
-
-            foreach (var aluno in lista)
-            {
-                Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.Nome} {aluno.Sobrenome}");
-                Console.WriteLine($" | ANO: {aluno.Ano} | STATUS: {aluno.Status}");
-            }
-
-            if (lista.Count == 0)
-                throw new Exception("Não há alunos cadastrados.");
-        }
-        public Aluno criaAluno()
-        {
-            Console.Write("Digite o Nome.........: ");
-            string nomeE = Console.ReadLine();
-
-            Console.Write("Digite o Sobrenome....: ");
-            string sobrenomeE = Console.ReadLine();
-
-            Console.Write("Digite o CPF..........: ");
-            string cpfE = Console.ReadLine();
-
-            ExibeAnos();
-
-            Console.Write("Escolha o Ano do Aluno: ");
-            int anoE = Convert.ToInt32(Console.ReadLine());
-
-            Console.Clear();
-
-            Console.WriteLine("DADOS INSERIDOS\n");
-
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
-
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
-
-            return new Aluno(
-                id: repositorioAlunos.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                ano: (Ano)anoE
-            );
-        }
-        public void ExibeAnos()
-        {
-            Console.WriteLine("\nANOS\n");
-
-            foreach (int i in Enum.GetValues(typeof(Ano)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Ano), i));
-            }
-
-            Console.Write("\n");
-        }
         public void AtualizarAluno()
         {
+            Console.Clear();
+            Console.WriteLine("ATUALIZAÇÃO DE ALUNO\n");
+
             Console.Write("Informe o ID do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
@@ -183,33 +108,42 @@ namespace sistema_escolar.console.Metodos
 
             repositorioAlunos.Atualizar(idAluno, aluno);
         }
-        public void ListarNotas()
+        public void AlteraStatus()
         {
             Console.Clear();
+            Console.WriteLine("ATUALIZAÇÃO DE STATUS DE ALUNO\n");
 
-            Console.WriteLine("LISTAGEM DE NOTAS\n");
-            
-            var listaNotas = repositorioNotas.Lista();
+            Console.Write("Informe o ID do Aluno: ");
+            int idAluno = Convert.ToInt32(Console.ReadLine());
 
-            if (listaNotas == null)
-                throw new Exception("Não há notas cadastradas no sistema.");
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
+                throw new Exception("Não há aluno cadastrado com este ID.");
 
-            foreach (var n in listaNotas)
+            Console.WriteLine("\nSITUAÇÃO\n");
+
+            foreach (int i in Enum.GetValues(typeof(Status)))
             {
-                var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
-
-                Console.Write($"NOME...: {aluno.Nome} | ");
-                Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {(Disciplina)n.Disciplina}");
-                Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
-                Console.WriteLine($"2° NOTA: {n.SegundaNota}");
-                Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
-                Console.WriteLine($"4° NOTA: {n.QuartaNota}");
-                Console.WriteLine($"MÉDIA..: {n.Media}\n");
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Status), i));
             }
+
+            Console.Write("\n");
+
+            Console.Write("Informe a Situação desejada: ");
+            int status = Convert.ToInt32(Console.ReadLine());
+
+            var aluno = repositorioAlunos.RetornaPorId(idAluno);
+
+            aluno.alteraStatus(status);
+
+            Console.WriteLine("Status alterado com sucesso.");
         }
+        
         public void InserirNota()
         {
-            bool primeira = true, existe = false;
+            Console.Clear();
+            Console.WriteLine("INSERÇÃO DE NOTA DE ALUNO\n");
+
+            bool primeira = true;
             int idNota = 0, disciplina = 0;
 
             var listaNotas = repositorioNotas.Lista();
@@ -237,27 +171,7 @@ namespace sistema_escolar.console.Metodos
             {
                 Console.WriteLine("Dados no Sistema\n");
 
-                foreach (var n in listaNotas)
-                {
-                    if (n.IdAluno == idAluno)
-                    {
-                        existe = true;
-                        var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
-
-                        Console.Write($"NOME...: {aluno.Nome} | ");
-                        Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {n.Disciplina}");
-                        Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
-                        Console.WriteLine($"2° NOTA: {n.SegundaNota}");
-                        Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
-                        Console.WriteLine($"4° NOTA: {n.QuartaNota}");
-                        Console.WriteLine($"MÉDIA..: {n.Media}\n");
-                    }
-                }
-
-                if (!existe)
-                {
-                    Console.WriteLine("Não há notas cadastradas para este aluno.");
-                }
+                listaNotaAluno(idAluno);
             }
 
             Console.Write("Informe a Disciplina da Nota: ");
@@ -296,7 +210,13 @@ namespace sistema_escolar.console.Metodos
 
             if (primeira)
             {
-                primeiraNota(idAluno, disciplina, notaInserida);
+                Nota nota = new Nota(
+                    repositorioNotas.ProximoId(), 
+                    idAluno, (Disciplina)disciplina, 
+                    notaInserida
+                );
+
+                repositorioNotas.Inserir(nota);
             }
             else
             {
@@ -308,11 +228,149 @@ namespace sistema_escolar.console.Metodos
             Console.Write("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
-        public void primeiraNota(int idAluno, int disciplina, double notaInserida)
+        public void ListarAlunos()
         {
-            Nota nota = new Nota(repositorioNotas.ProximoId(), idAluno, (Disciplina)disciplina, notaInserida);
+            Console.Clear();
+            Console.WriteLine("LISTAGEM DE ALUNOS\n");
 
-            repositorioNotas.Inserir(nota);
+            var lista = repositorioAlunos.Lista();
+
+            foreach (var aluno in lista)
+            {
+                Console.Write($"ID: {aluno.retornaId()} | NOME: {aluno.Nome} {aluno.Sobrenome}");
+                Console.WriteLine($" | ANO: {aluno.Ano} | STATUS: {aluno.Status}");
+            }
+
+            if (lista.Count == 0)
+                throw new Exception("Não há alunos cadastrados.");
+        }
+        public void ListarAluno()
+        {
+            Console.Clear();
+            Console.WriteLine("LISTAGEM DE ALUNO\n");
+
+            Console.Write("Insira o seu ID: ");
+            int idAluno = Convert.ToInt32(Console.ReadLine());
+
+            if (repositorioAlunos.RetornaPorId(idAluno) == null)
+                throw new Exception("Não há aluno cadastrado com este ID.");
+
+            Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
+
+            Console.WriteLine("\nDADOS NO SISTEMA\n");
+
+            Console.WriteLine($"NOME......: {aluno.Nome} {aluno.Sobrenome}");
+            Console.WriteLine($"CPF.......: {aluno.CPF}");
+            Console.WriteLine($"ANO.......: {aluno.Ano}");
+            Console.WriteLine($"STATUS....: {aluno.Status}");
+        }
+        public void ListarNotas()
+        {
+            Console.Clear();
+
+            Console.WriteLine("LISTAGEM DE NOTAS\n");
+
+            var listaNotas = repositorioNotas.Lista();
+
+            if (listaNotas == null)
+                throw new Exception("Não há notas cadastradas no sistema.");
+
+            foreach (var n in listaNotas)
+            {
+                var aluno = repositorioAlunos.RetornaPorId(n.IdAluno);
+
+                Console.Write($"NOME...: {aluno.Nome} | ");
+                Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {(Disciplina)n.Disciplina}");
+                Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
+                Console.WriteLine($"2° NOTA: {n.SegundaNota}");
+                Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
+                Console.WriteLine($"4° NOTA: {n.QuartaNota}");
+                Console.WriteLine($"MÉDIA..: {n.Media}\n");
+            }
+        }
+        public void ListarNota()
+        {
+            Console.Clear();
+            Console.WriteLine("LISTAGEM DE NOTA\n");
+
+            Console.Write("Informe o ID do Aluno: ");
+            int idAluno = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\n");
+
+            listaNotaAluno(idAluno);
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+        public Aluno criaAluno()
+        {
+            Console.Write("Digite o Nome.........: ");
+            string nomeE = Console.ReadLine();
+
+            Console.Write("Digite o Sobrenome....: ");
+            string sobrenomeE = Console.ReadLine();
+
+            Console.Write("Digite o CPF..........: ");
+            string cpfE = Console.ReadLine();
+
+            Console.WriteLine("\nANOS\n");
+
+            foreach (int i in Enum.GetValues(typeof(Ano)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Ano), i));
+            }
+
+            Console.Write("\n");
+
+            Console.Write("Escolha o Ano do Aluno: ");
+            int anoE = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            Console.WriteLine("DADOS INSERIDOS\n");
+
+            Console.WriteLine($"NOME......: {nomeE}");
+            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
+            Console.WriteLine($"CPF.......: {cpfE}");
+            Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), anoE)}");
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
+
+            return new Aluno(
+                id: repositorioAlunos.ProximoId(),
+                nome: nomeE,
+                sobrenome: sobrenomeE,
+                cpf: cpfE,
+                ano: (Ano)anoE
+            );
+        }
+        public void listaNotaAluno(int idAluno)
+        {
+            bool existe = false;
+
+            var aluno = repositorioAlunos.RetornaPorId(idAluno);
+            var listaNotas = repositorioNotas.Lista();
+
+            foreach (var n in listaNotas)
+            {
+                if (n.IdAluno == idAluno)
+                {
+                    existe = true;
+
+                    Console.Write($"NOME...: {aluno.Nome} | ");
+                    Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {n.Disciplina}");
+                    Console.Write($"1° NOTA: {n.PrimeiraNota} | ");
+                    Console.WriteLine($"2° NOTA: {n.SegundaNota}");
+                    Console.Write($"3° NOTA: {n.TerceiraNota} | ");
+                    Console.WriteLine($"4° NOTA: {n.QuartaNota}");
+                    Console.WriteLine($"MÉDIA..: {n.Media}\n");
+                }
+            }
+
+            if(!existe)
+                Console.WriteLine("Não há notas cadastradas para este aluno.");
         }
         public void atualizaNota(int idNota, int opcao, double notaInserida)
         {
@@ -335,32 +393,6 @@ namespace sistema_escolar.console.Metodos
             }
 
             repositorioNotas.Atualizar(idNota, nota);
-        }
-        public void AlteraStatus()
-        {
-            Console.Write("Informe o ID do Aluno: ");
-            int idAluno = Convert.ToInt32(Console.ReadLine());
-
-            if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
-
-            Console.WriteLine("\nSITUAÇÃO\n");
-
-            foreach (int i in Enum.GetValues(typeof(Status)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Status), i));
-            }
-
-            Console.Write("\n");
-
-            Console.Write("Informe a Situação desejada: ");
-            int status = Convert.ToInt32(Console.ReadLine());
-
-            var aluno = repositorioAlunos.RetornaPorId(idAluno);
-
-            aluno.alteraStatus(status);
-
-            Console.WriteLine("Status alterado com sucesso.");
         }
     }
 }
