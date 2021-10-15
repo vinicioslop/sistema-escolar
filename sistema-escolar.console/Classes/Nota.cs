@@ -17,5 +17,13 @@ namespace sistema_escolar.console
             this.Disciplina = disciplina;
             this.PrimeiraNota = primeiraNota;
         }
+        public void CalculaMedia()
+        {
+            this.Media = (
+                this.PrimeiraNota + 
+                this.SegundaNota + 
+                this.TerceiraNota + 
+                this.QuartaNota) / 4;
+        }
     }
 }
