@@ -14,9 +14,7 @@ namespace sistema_escolar.console.Views
             do
             {
                 Console.Clear();
-
                 Console.WriteLine("INTERFACE DO PROFESSOR\n");
-
                 Console.WriteLine("Insira a opção com base na ação preferida:");
                 Console.WriteLine("1 - LISTAR ALUNOS");
                 Console.WriteLine("2 - LISTAR ALUNO");
@@ -77,9 +75,6 @@ namespace sistema_escolar.console.Views
             try
             {
                 viewAluno.listarAluno();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
@@ -96,7 +91,7 @@ namespace sistema_escolar.console.Views
             {
                 metodosAluno.ListarNotas();
 
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -114,7 +109,7 @@ namespace sistema_escolar.console.Views
             {
                 metodosAluno.InserirNota();
 
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -124,16 +119,15 @@ namespace sistema_escolar.console.Views
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
-
             }
         }
         public void calcularMedia()
         {
             try
             {
-                metodosAluno.CalculaMedia();
+                metodosAluno.CalcularMedia();
 
-                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -143,7 +137,6 @@ namespace sistema_escolar.console.Views
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
-
             }
         }
     }

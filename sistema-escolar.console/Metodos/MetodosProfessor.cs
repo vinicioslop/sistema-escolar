@@ -56,14 +56,12 @@ namespace sistema_escolar.console.Metodos
             Console.Write("Insira o ID do professor: ");
             int idE = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("\n");
-
             Professor professor = repositorioProfessores.RetornaPorId(idE);
 
             if (professor == null)
                 throw new Exception("Não professor cadastrado com este ID.");
 
-            Console.WriteLine("DADOS NO SISTEMA\n");
+            Console.WriteLine("\nDADOS NO SISTEMA\n");
 
             Console.WriteLine($"NOME......: {professor.Nome} {professor.Sobrenome}");
             Console.WriteLine($"CPF.......: {professor.CPF}");
@@ -102,7 +100,7 @@ namespace sistema_escolar.console.Metodos
 
             var professorSistema = repositorioProfessores.RetornaPorId(idProfessor);
 
-            Console.WriteLine("DADOS INSERIDOS\n");
+            Console.WriteLine("\nDADOS INSERIDOS\n");
 
             Console.WriteLine($"NOME......: {professorSistema.Nome}");
             Console.WriteLine($"SOBRENOME.: {professorSistema.Sobrenome}");

@@ -16,7 +16,6 @@ namespace sistema_escolar.console.Views
                 Console.Clear();
 
                 Console.WriteLine("Interface de Secretario(a)\n");
-
                 Console.WriteLine("Insira a opção com base na ação preferida:");
                 Console.WriteLine("1 - LISTAR ALUNOS");
                 Console.WriteLine("2 - LISTAR PROFESSORES");
@@ -54,8 +53,6 @@ namespace sistema_escolar.console.Views
                 case "6":
                     atualizarProfessor();
                     break;
-                case "x":
-                    break;
                 default:
                     break;
             }
@@ -65,8 +62,6 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosProfessor.CadastrarProfessor();
-
-                Console.Clear();
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();

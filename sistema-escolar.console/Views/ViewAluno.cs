@@ -15,7 +15,7 @@ namespace sistema_escolar.console.Views
 
                 Console.WriteLine("INTERFACE DO ALUNO\n");
 
-                Console.WriteLine("Insira a opção com base na ação preferida:");
+                Console.WriteLine("Insira a opção com base na ação preferida:\n");
                 Console.WriteLine("1 - VIZUALIZAR DADOS DO ALUNO");
                 Console.WriteLine("2 - VIZUALIZAR NOTAS DO ALUNO");
                 Console.WriteLine("X - VOLTAR PARA A HOME\n");
@@ -35,8 +35,6 @@ namespace sistema_escolar.console.Views
                     break;
                 case "2":
                     listarNota();
-                    break;
-                case "x":
                     break;
                 default:
                     break;

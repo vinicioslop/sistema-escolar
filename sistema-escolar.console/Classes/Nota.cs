@@ -38,7 +38,7 @@ namespace sistema_escolar.console
                     throw new System.Exception("Opção de nota inválida.");
             }
         }
-        public void CalculaMedia()
+        public void CalcularMedia()
         {
             this.Media = (
                 this.PrimeiraNota +
