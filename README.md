@@ -25,8 +25,9 @@ Realizar o cadastro dos anos da escola (2º Ano à 9º Ano) | ✅ | OK
 Realizar o cadastro das disciplinas que são lecionadas na escola | ✅ | OK
 O sistema precisa vincular a matéria que cada professor leciona | ✅ | OK
 O sistema precisa aceitar as notas de cada aluno | ✅ | OK
-O sistema precisa calcular as médias do aluno quando as 4 notas forem cadastradas | 💻
-O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻
+O sistema precisa calcular as médias do aluno | ✅ | OK
+O sistema precisa verificar se o aluno passará caso a média for maior ou igual a 7 | 💻 | A fazer
+Revisão e tratamentos da aplicação, como verificar inconsistencias de exibição | 💻 | A fazer
 O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | ✅ | OK
 
 ### Funcionalidade Opcionais
