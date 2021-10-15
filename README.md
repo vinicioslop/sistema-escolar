@@ -28,6 +28,7 @@ O sistema precisa aceitar as notas de cada aluno | ✅ | OK
 O sistema precisa calcular as médias do aluno | ✅ | OK
 O sistema precisa atribuir as seguintes situações quando: **MÉDIA <= 5,4 ENTÃO SITUACAO = REPROVADO, MÉDIA <= 6.9 ENTÃO SITUACAO = RECUPERAÇÃO ou MÉDIA > 6.9 ENTÃO SITUACAO = APROVADO** | ✅ | OK
 Revisão e tratamentos da aplicação, como verificar inconsistencias de exibição | ✅ | OK
+O sistema pode validar os dados digitados pelo usuário | 💻
 
 ### Funcionalidade Opcionais
 
@@ -35,7 +36,6 @@ Funcionalidade | Status
 :--------------|:------------:
 O sistema pode ser convertido em uma API Web para realização das tarefas de negocio e separar em programas diferentes a viuzalização da lógica do projeto | 💻
 O sistema pode ter um sistema de validação para definir se um usuário tem permição para realizar determinada ação | 💻
-O sistema pode validar os dados digitados pelo usuário | 💻
 O sistema pode aceitar as presenças dos alunos por dia | 💻
 O sistema pode verificar se o aluno reprovará ou precisará fazer recuperação por faltar acima do limite | 💻
 O sistema poderá permitir que o professor lecione mais de uma matéria | 💻
