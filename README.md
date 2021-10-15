@@ -26,7 +26,7 @@ Realizar o cadastro das disciplinas que são lecionadas na escola | ✅ | OK
 O sistema precisa vincular a matéria que cada professor leciona | ✅ | OK
 O sistema precisa aceitar as notas de cada aluno | ✅ | OK
 O sistema precisa calcular as médias do aluno | ✅ | OK
-O sistema precisa atribuir as seguintes situações quando: MÉDIA <= 5,4 ENTÃO SITUACAO = REPROVADO, MÉDIA <= 6.9 ENTÃO SITUACAO = RECUPERAÇÃO ou MÉDIA > 6.9 ENTÃO SITUACAO = APROVADO | ✅ | OK
+O sistema precisa atribuir as seguintes situações quando: **MÉDIA <= 5,4 ENTÃO SITUACAO = REPROVADO, MÉDIA <= 6.9 ENTÃO SITUACAO = RECUPERAÇÃO ou MÉDIA > 6.9 ENTÃO SITUACAO = APROVADO** | ✅ | OK
 Revisão e tratamentos da aplicação, como verificar inconsistencias de exibição | 💻 | A fazer
 O sistema precisa gerenciar um status para monitorar a matricula do aluno (CURSANDO, APROVADO, REPROVADO, RECUPERAÇÃO) | ✅ | OK
 
