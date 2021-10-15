@@ -289,11 +289,19 @@ namespace sistema_escolar.console.Metodos
 
             Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
 
-            Console.WriteLine("\nDADOS NO SISTEMA\n");
+            Console.Clear();
 
+            Console.WriteLine("\nDADOS NO SISTEMA\n");
             Console.WriteLine($"NOME......: {aluno.Nome} {aluno.Sobrenome}");
             Console.WriteLine($"CPF.......: {aluno.CPF}");
-            Console.WriteLine($"ANO.......: {aluno.Ano}");
+            Console.WriteLine($"ANO.......: {aluno.Ano}\n");
+
+            Console.WriteLine("NOTAS DO ALUNO NO SISTEMA\n");
+            
+            listaNotaAluno(idAluno);
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void ListarNotas()
         {
@@ -311,13 +319,13 @@ namespace sistema_escolar.console.Metodos
 
                 Console.Write($"ID: {aluno.Id} | ");
                 Console.WriteLine($"NOME: {aluno.Nome} {aluno.Sobrenome}");
-                Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {(Disciplina)n.Disciplina}");
-                Console.WriteLine($"1° NOTA: {n.PrimeiraNota}");
-                Console.WriteLine($"2° NOTA: {n.SegundaNota}");
-                Console.WriteLine($"3° NOTA: {n.TerceiraNota}");
-                Console.WriteLine($"4° NOTA: {n.QuartaNota}");
-                Console.WriteLine($"MÉDIA..: {n.Media}");
-                Console.WriteLine($"MÉDIA..: {(Status)n.Status}\n");
+                Console.WriteLine($"DISCIPLINA: {(int)n.Disciplina} - {(Disciplina)n.Disciplina}");
+                Console.WriteLine($"1° NOTA...: {n.PrimeiraNota}");
+                Console.WriteLine($"2° NOTA...: {n.SegundaNota}");
+                Console.WriteLine($"3° NOTA...: {n.TerceiraNota}");
+                Console.WriteLine($"4° NOTA...: {n.QuartaNota}");
+                Console.WriteLine($"MÉDIA.....: {n.Media}");
+                Console.WriteLine($"SITUAÇÃO..: {(Status)n.Status}\n");
             }
         }
         public void ListarNota()
@@ -355,13 +363,12 @@ namespace sistema_escolar.console.Metodos
                 {
                     existe = true;
 
-                    Console.Write($"NOME...: {aluno.Nome} | ");
                     Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {n.Disciplina}");
-                    Console.Write($"1° NOTA: {n.PrimeiraNota} | ");
-                    Console.WriteLine($"2° NOTA: {n.SegundaNota}");
-                    Console.Write($"3° NOTA: {n.TerceiraNota} | ");
-                    Console.WriteLine($"4° NOTA: {n.QuartaNota}");
-                    Console.WriteLine($"MÉDIA..: {n.Media}\n");
+                    Console.WriteLine($"1ª NOTA: {n.PrimeiraNota}");
+                    Console.WriteLine($"2ª NOTA: {n.SegundaNota}");
+                    Console.WriteLine($"3ª NOTA: {n.TerceiraNota}");
+                    Console.WriteLine($"4ª NOTA: {n.QuartaNota}");
+                    Console.WriteLine($"MÉDIA..: {n.Media}");
                 }
             }
 
