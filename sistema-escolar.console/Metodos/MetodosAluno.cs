@@ -75,31 +75,7 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
             Console.WriteLine("CADASTRO DE ALUNO\n");
 
-            Console.Write("Digite o Nome.........: ");
-            string nomeE = Console.ReadLine();
-
-            Console.Write("Digite o Sobrenome....: ");
-            string sobrenomeE = Console.ReadLine();
-
-            Console.Write("Digite o CPF..........: ");
-            string cpfE = Console.ReadLine();
-
-            Console.WriteLine("\nANOS\n");
-
-            exibeAnos();
-
-            Console.Write("\n");
-
-            Console.Write("Escolha o Ano do Aluno: ");
-            int anoE = Convert.ToInt32(Console.ReadLine());
-
-            Aluno aluno = new Aluno(
-                id: repositorioAlunos.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                ano: (Ano)anoE
-            );
+            Aluno aluno = criaAluno();
 
             Console.Clear();
 
@@ -133,19 +109,7 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine($"CPF.......: {aluno.CPF}");
             Console.WriteLine($"ANO.......: {Enum.GetName(typeof(Ano), aluno.Ano)}\n");
 
-            Console.WriteLine("\nInforme os dados do Aluno\n");
-            Console.Write($"NOME..........: ");
-            string nome = Console.ReadLine();
-
-            Console.Write($"SOBRENOME.....: ");
-            string sobrenome = Console.ReadLine();
-
-            Console.Write($"CPF...........: ");
-            string cpf = Console.ReadLine();
-
-            exibeAnos();
-
-            Console.Write($"ANO...........: ");
+            aluno = criaAluno();
 
             repositorioAlunos.Atualizar(idAluno, aluno);
         }
@@ -165,7 +129,7 @@ namespace sistema_escolar.console.Metodos
 
             Console.WriteLine("Dados no Sistema");
 
-            listaNotaAluno(idAluno);
+            listaNotasAluno(idAluno);
 
             Console.WriteLine("Deseja inserir uma nova nota?");
 
@@ -184,15 +148,15 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine("3 - TERCEIRA NOTA");
             Console.WriteLine("4 - QUARTA NOTA\n");
 
-            Console.Write("Informe a Nota a partir das opções acima: ");
+            Console.Write("Informe qual nota quer alterar: ");
             int opcao = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Informe a Nota do Aluno: ");
             double notaInserida = Convert.ToDouble(Console.ReadLine());
 
-            var lista = repositorioNotas.Lista();
+            var listaNotas = repositorioNotas.Lista();
 
-            foreach (var nota in lista)
+            foreach (var nota in listaNotas)
             {
                 if (nota.IdAluno == idAluno)
                 {
@@ -210,6 +174,7 @@ namespace sistema_escolar.console.Metodos
                     repositorioNotas.ProximoId(),
                     idAluno, (Disciplina)disciplina
                 );
+
                 nota.InsereNota(1, notaInserida);
 
                 repositorioNotas.Inserir(nota);
@@ -253,7 +218,7 @@ namespace sistema_escolar.console.Metodos
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
                 throw new Exception("Não há aluno cadastrado com este ID.");
 
-            listaNotaAluno(idAluno);
+            listaNotasAluno(idAluno);
 
             Console.Write("Informe a Disciplina da Nota do Aluno: ");
             int disciplina = Convert.ToInt32(Console.ReadLine());
@@ -284,7 +249,7 @@ namespace sistema_escolar.console.Metodos
 
             Console.WriteLine("NOTAS DO ALUNO NO SISTEMA");
 
-            listaNotaAluno(idAluno);
+            listaNotasAluno(idAluno);
         }
         public void ListarNotas()
         {
@@ -319,7 +284,33 @@ namespace sistema_escolar.console.Metodos
             Console.Write("Informe o ID do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
-            listaNotaAluno(idAluno);
+            listaNotasAluno(idAluno);
+        }
+        public Aluno criaAluno()
+        {
+            Console.Write("Digite o Nome.........: ");
+            string nomeE = Console.ReadLine();
+
+            Console.Write("Digite o Sobrenome....: ");
+            string sobrenomeE = Console.ReadLine();
+
+            Console.Write("Digite o CPF..........: ");
+            string cpfE = Console.ReadLine();
+
+            Console.WriteLine("\nANOS\n");
+
+            exibeAnos();
+
+            Console.Write("Escolha o Ano do Aluno: ");
+            int anoE = Convert.ToInt32(Console.ReadLine());
+
+            return new Aluno(
+                id: repositorioAlunos.ProximoId(),
+                nome: nomeE,
+                sobrenome: sobrenomeE,
+                cpf: cpfE,
+                ano: (Ano)anoE
+            );
         }
         public void exibeAnos()
         {
@@ -332,7 +323,7 @@ namespace sistema_escolar.console.Metodos
 
             Console.Write("\n");
         }
-        public void listaNotaAluno(int idAluno)
+        public void listaNotasAluno(int idAluno)
         {
             bool existe = false;
 
@@ -347,12 +338,12 @@ namespace sistema_escolar.console.Metodos
                 {
                     existe = true;
 
-                    Console.WriteLine($"DISCIPLINA...: {(int)n.Disciplina} - {n.Disciplina}");
-                    Console.WriteLine($"1ª NOTA: {n.PrimeiraNota}");
-                    Console.WriteLine($"2ª NOTA: {n.SegundaNota}");
-                    Console.WriteLine($"3ª NOTA: {n.TerceiraNota}");
-                    Console.WriteLine($"4ª NOTA: {n.QuartaNota}");
-                    Console.WriteLine($"MÉDIA..: {n.Media}");
+                    Console.WriteLine($"DISCIPLINA: {(int)n.Disciplina} - {n.Disciplina}");
+                    Console.WriteLine($"1ª NOTA...: {n.PrimeiraNota}");
+                    Console.WriteLine($"2ª NOTA...: {n.SegundaNota}");
+                    Console.WriteLine($"3ª NOTA...: {n.TerceiraNota}");
+                    Console.WriteLine($"4ª NOTA...: {n.QuartaNota}");
+                    Console.WriteLine($"MÉDIA.....: {n.Media}");
                 }
             }
 

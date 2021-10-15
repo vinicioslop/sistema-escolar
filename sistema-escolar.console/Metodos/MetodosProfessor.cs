@@ -52,6 +52,7 @@ namespace sistema_escolar.console.Metodos
         public void ListarProfessor()
         {
             Console.Clear();
+            Console.WriteLine("LISTAGEM DE PROFESSOR\n");
 
             Console.Write("Insira o ID do professor: ");
             int idE = Convert.ToInt32(Console.ReadLine());
@@ -105,7 +106,7 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine($"NOME......: {professorSistema.Nome}");
             Console.WriteLine($"SOBRENOME.: {professorSistema.Sobrenome}");
             Console.WriteLine($"CPF.......: {professorSistema.CPF}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), professorSistema.Disciplina)}\n");
+            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), professorSistema.Disciplina)}");
 
             Professor professor = criaProfessor();
 
@@ -113,6 +114,8 @@ namespace sistema_escolar.console.Metodos
         }
         public Professor criaProfessor()
         {
+            Console.Write("\n");
+            
             Console.Write("Digite o Nome.......: ");
             string nomeE = Console.ReadLine();
 
@@ -132,9 +135,9 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine($"NOME......: {nomeE}");
             Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
             Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}");
+            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}\n");
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.Write("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
 
             return new Professor(

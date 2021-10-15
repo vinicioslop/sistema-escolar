@@ -57,18 +57,15 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosAluno.ListarAlunos();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void listarAluno()
         {
@@ -80,64 +77,55 @@ namespace sistema_escolar.console.Views
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void listarNotas()
         {
             try
             {
                 metodosAluno.ListarNotas();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
+                Console.WriteLine($"Contexto: {ex.Message}\n");
             }
+
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void inserirNota()
         {
             try
             {
                 metodosAluno.InserirNota();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void calcularMedia()
         {
             try
             {
                 metodosAluno.CalcularMedia();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

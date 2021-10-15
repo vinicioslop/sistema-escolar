@@ -45,18 +45,15 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosAluno.ListarAluno();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
 
         public void listarNota()
@@ -64,18 +61,15 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosAluno.ListarNota();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

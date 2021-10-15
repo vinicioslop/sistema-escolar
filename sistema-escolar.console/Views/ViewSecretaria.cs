@@ -62,109 +62,90 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosProfessor.CadastrarProfessor();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void atualizarProfessor()
         {
             try
             {
                 metodosProfessor.AtualizarProfessor();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void listarProfessores()
         {
             try
             {
                 metodosProfessor.ListarProfessores();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void cadastrarAluno()
         {
             try
             {
                 metodosAluno.CadastrarAluno();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void atualizarAluno()
         {
             try
             {
                 metodosAluno.AtualizarAluno();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
         public void listarAlunos()
         {
             try
             {
                 metodosAluno.ListarAlunos();
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
                 Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
             }
+
+            Console.Write("\nPressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }
