@@ -4,7 +4,7 @@ namespace sistema_escolar.console
     {
         CURSANDO = 1,
         APROVADO = 2,
-        RECUPERCAO = 3,
+        RECUPERACAO = 3,
         REPROVADO = 4
     }
 }

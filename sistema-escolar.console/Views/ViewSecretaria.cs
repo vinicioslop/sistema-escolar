@@ -24,7 +24,6 @@ namespace sistema_escolar.console.Views
                 Console.WriteLine("4 - CADASTRAR PROFESSOR");
                 Console.WriteLine("5 - ATUALIZAR ALUNO");
                 Console.WriteLine("6 - ATUALIZAR PROFESSOR");
-                Console.WriteLine("7 - ALTERAR STATUS DO ALUNO");
                 Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
                 Console.Write("Informe a opção desejada: ");
@@ -54,9 +53,6 @@ namespace sistema_escolar.console.Views
                     break;
                 case "6":
                     atualizarProfessor();
-                    break;
-                case "7":
-                    alterarStatusAluno();
                     break;
                 case "x":
                     break;
@@ -164,24 +160,6 @@ namespace sistema_escolar.console.Views
                 metodosAluno.ListarAlunos();
 
                 Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-        }
-        public void alterarStatusAluno()
-        {
-            try
-            {
-                metodosAluno.AlteraStatus();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             catch (Exception ex)

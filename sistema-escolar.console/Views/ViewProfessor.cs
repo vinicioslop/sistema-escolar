@@ -23,7 +23,6 @@ namespace sistema_escolar.console.Views
                 Console.WriteLine("3 - LISTAR NOTAS");
                 Console.WriteLine("4 - INSERÇÃO DE NOTA DO ALUNO");
                 Console.WriteLine("5 - CALCULAR MÉDIA DO ALUNO");
-                Console.WriteLine("6 - ALTERAR STATUS DO ALUNO");
                 Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
                 Console.Write("Informe a opção desejada: ");
@@ -50,9 +49,6 @@ namespace sistema_escolar.console.Views
                     break;
                 case "5":
                     calcularMedia();
-                    break;
-                case "6":
-                    alterarStatusAluno();
                     break;
                 default:
                     break;
@@ -136,25 +132,6 @@ namespace sistema_escolar.console.Views
             try
             {
                 metodosAluno.CalculaMedia();
-
-                Console.Write("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
-
-                Console.Write("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
-
-            }
-        }
-        public void alterarStatusAluno()
-        {
-            try
-            {
-                metodosAluno.AlteraStatus();
 
                 Console.Write("Pressione qualquer tecla para continuar...");
                 Console.ReadKey();
