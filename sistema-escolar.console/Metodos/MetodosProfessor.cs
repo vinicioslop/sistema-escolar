@@ -6,8 +6,7 @@ namespace sistema_escolar.console.Metodos
     public class MetodosProfessor
     {
         public static ProfessorRepositorio repositorioProfessores = new ProfessorRepositorio();
-        public static NotaRepositorio repositorioNotas = new NotaRepositorio();
-
+        MetodosEnum metodosEnum = new MetodosEnum();
         public void IniciaProfessoresMockados()
         {
             // DADOS MOCKADOS DE ALUNOS
@@ -77,17 +76,7 @@ namespace sistema_escolar.console.Metodos
 
             repositorioProfessores.Inserir(professor);
         }
-        public void ExibeDisciplinas()
-        {
-            Console.WriteLine("\nDISCIPLINAS\n");
-
-            foreach (int i in Enum.GetValues(typeof(Disciplina)))
-            {
-                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
-            }
-
-            Console.Write("\n");
-        }
+        
         public void AtualizarProfessor()
         {
             Console.Clear();
@@ -125,7 +114,7 @@ namespace sistema_escolar.console.Metodos
             Console.Write("Digite o CPF........: ");
             string cpfE = Console.ReadLine();
 
-            ExibeDisciplinas();
+            metodosEnum.ExibeDisciplinas();
 
             Console.Write("Escolha a Disciplina: ");
             int disciplinaE = Convert.ToInt32(Console.ReadLine());
