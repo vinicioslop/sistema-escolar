@@ -17,8 +17,8 @@ namespace sistema_escolar.console.Views
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
                 Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | 1 - VIZUALIZAR DADOS DO ALUNO                  |");
-                Console.WriteLine("  | 2 - VIZUALIZAR NOTAS DO ALUNO                  |");
+                Console.WriteLine("  | 1 - VIZUALIZAR DADOS CADASTRAIS DO ALUNO       |");
+                Console.WriteLine("  | 2 - VIZUALIZAR NOTAS DO ALUNO NO SISTEMA       |");
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
                 Console.WriteLine("  +================================================+");
@@ -51,7 +51,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -67,7 +67,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }

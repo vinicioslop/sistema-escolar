@@ -32,10 +32,10 @@ namespace sistema_escolar.console.Metodos
             Aluno aluno = criaAluno();
 
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                DADOS INSERIDOS                 |");
+            Console.WriteLine("  |                DADOS INFORMADOS                |");
             Console.WriteLine("  +================================================+");
 
-            Console.WriteLine($"\n  ID.......: {aluno.Id}");
+            Console.WriteLine($"\n  MATRÍCULA: {aluno.Id}");
             Console.WriteLine($"  NOME.....: {aluno.Nome}");
             Console.WriteLine($"  SOBRENOME: {aluno.Sobrenome}");
             Console.WriteLine($"  CPF......: {aluno.CPF}");
@@ -48,19 +48,19 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
 
             Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |              ATUALIZAÇÃO DE ALUNO              |");
+            Console.WriteLine("  |         ATUALIZAÇÃO DE DADOS DE ALUNO          |");
             Console.WriteLine("  +================================================+");
 
-            Console.Write("\n  Informe o ID do Aluno: ");
+            Console.Write("\n  Informe o código de matricula do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
+                throw new Exception("Não há aluno cadastrado com este código.");
 
             Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
 
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                DADOS NO SISTEMA                |");
+            Console.WriteLine("  |            DADOS DO ALUNO NO SISTEMA           |");
             Console.WriteLine("  +================================================+");
 
             Console.WriteLine($"\n  NOME......: {aluno.Nome}");
@@ -83,19 +83,19 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine("  |           INSERÇÃO DE NOTA DE ALUNO            |");
             Console.WriteLine("  +================================================+");
 
-            Console.Write("\n  Informe o ID do Aluno: ");
+            Console.Write("\n  Informe o código de matrícula do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
+                throw new Exception("Não há aluno cadastrado com este código.");
 
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                DADOS NO SISTEMA                |");
+            Console.WriteLine("  |            DADOS DO ALUNO NO SISTEMA           |");
             Console.WriteLine("  +================================================+");
 
             listaNotasAluno(idAluno);
 
-            Console.WriteLine("\n  Deseja inserir uma nova Nota com outra Disciplina?");
+            Console.WriteLine("\n  Deseja inserir uma nova nota de outra Disciplina?");
             Console.Write("  (S)im, (N)ão: ");
             string novaNota = Console.ReadLine();
 
@@ -158,7 +158,7 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
 
             Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |               LISTAGEM DE ALUNOS               |");
+            Console.WriteLine("  |         LISTAGEM DE ALUNOS CADASTRADOS         |");
             Console.WriteLine("  +================================================+");
 
             var lista = repositorioAlunos.Lista();
@@ -167,7 +167,7 @@ namespace sistema_escolar.console.Metodos
 
             foreach (var aluno in lista)
             {
-                Console.Write($"  ID: {aluno.retornaId()} | NOME: {aluno.Nome} {aluno.Sobrenome}");
+                Console.Write($"  MATRÍCULA: {aluno.retornaId()} | NOME: {aluno.Nome} {aluno.Sobrenome}");
                 Console.WriteLine($" | ANO: {aluno.Ano}");
             }
 
@@ -179,21 +179,24 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
 
             Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |            CALCULAR MEDIA DO ALUNO             |");
+            Console.WriteLine("  |            CALCULAR MÉDIA DO ALUNO             |");
             Console.WriteLine("  +================================================+");
 
             if (repositorioNotas.Lista() == null)
-                throw new Exception("Não há notas cadastradas no sistema.");
+            {
+                Console.WriteLine("\n  Não há notas cadastradas no sistema.");
+                return;
+            }
 
-            Console.Write("\n  Informe o ID do Aluno: ");
+            Console.Write("\n  Informe o código de matrícula do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
+                throw new Exception("Não há aluno cadastrado com este código.");
 
             listaNotasAluno(idAluno);
 
-            Console.Write("\n  Informe a Disciplina da Nota do Aluno: ");
+            Console.Write("\n  Informe a Disciplina referente a Nota do Aluno: ");
             int disciplina = Convert.ToInt32(Console.ReadLine());
 
             var listaNotas = repositorioNotas.Lista();
@@ -209,19 +212,19 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
 
             Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |               LISTAGEM DE ALUNO                |");
+            Console.WriteLine("  |           LISTAGEM DE DADOS DO ALUNO           |");
             Console.WriteLine("  +================================================+");
 
-            Console.Write("\n  Insira o seu ID: ");
+            Console.Write("\n  Insira o seu código de matrícula do aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
             if (repositorioAlunos.RetornaPorId(idAluno) == null)
-                throw new Exception("Não há aluno cadastrado com este ID.");
+                throw new Exception("Não há aluno cadastrado com este código.");
 
             Aluno aluno = repositorioAlunos.RetornaPorId(idAluno);
 
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                DADOS NO SISTEMA                |");
+            Console.WriteLine("  |            DADOS DO ALUNO NO SISTEMA           |");
             Console.WriteLine("  +================================================+");
 
             Console.WriteLine($"\n  NOME......: {aluno.Nome} {aluno.Sobrenome}");
@@ -249,10 +252,10 @@ namespace sistema_escolar.console.Metodos
             Console.Clear();
 
             Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |                LISTAGEM DE NOTA                |");
+            Console.WriteLine("  |           LISTAGEM DE NOTAS DE ALUNO           |");
             Console.WriteLine("  +================================================+");
 
-            Console.Write("\n  Informe o ID do Aluno: ");
+            Console.Write("\n  Informe o código de matrícula do Aluno: ");
             int idAluno = Convert.ToInt32(Console.ReadLine());
 
             listaNotasAluno(idAluno);
@@ -287,10 +290,10 @@ namespace sistema_escolar.console.Metodos
         {
             Console.Write("\n");
 
-            if (repositorioNotas.Lista() == null)
-                throw new Exception("Não há notas cadastradas no sistema.");
-
             var listaNotas = repositorioNotas.Lista();
+            
+            if (listaNotas.Count < 1)
+                throw new Exception("Não há notas cadastradas no sistema.");
 
             foreach (var n in listaNotas)
             {
@@ -312,11 +315,10 @@ namespace sistema_escolar.console.Metodos
             bool existe = false;
 
             var aluno = repositorioAlunos.RetornaPorId(idAluno);
-
-            if (repositorioNotas.Lista() == null)
-                throw new Exception("Não há notas cadastradas no sistema.");
-
             var listaNotas = repositorioNotas.Lista();
+
+            if (listaNotas.Count < 1)
+                throw new Exception("Não há notas cadastradas no sistema.");
 
             Console.Write("\n");
 
@@ -358,6 +360,9 @@ namespace sistema_escolar.console.Metodos
 
             var lista = repositorioProfessores.Lista();
 
+            if (lista.Count == 0)
+                throw new Exception("Não há professores cadastrados.");
+
             Console.Write("\n");
 
             foreach (var professor in lista)
@@ -365,9 +370,6 @@ namespace sistema_escolar.console.Metodos
                 Console.Write($"  ID: {professor.Id} | NOME: {professor.Nome} {professor.Sobrenome}");
                 Console.WriteLine($" | DISCIPLINA: {professor.Disciplina}");
             }
-
-            if (lista.Count == 0)
-                throw new Exception("Não há professores cadastrados.");
         }
         public static void ListarProfessor()
         {
@@ -380,10 +382,10 @@ namespace sistema_escolar.console.Metodos
             Console.Write("\n  Insira o ID do professor: ");
             int idE = Convert.ToInt32(Console.ReadLine());
 
-            Professor professor = repositorioProfessores.RetornaPorId(idE);
-
-            if (professor == null)
+            if (repositorioProfessores.RetornaPorId(idE) == null)
                 throw new Exception("Não professor cadastrado com este ID.");
+
+            Professor professor = repositorioProfessores.RetornaPorId(idE);
 
             Console.WriteLine("  +================================================+");
             Console.WriteLine("  |                DADOS NO SISTEMA                |");

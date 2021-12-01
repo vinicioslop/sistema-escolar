@@ -7,7 +7,7 @@ namespace sistema_escolar.console.Metodos
         public static void ExibeDisciplinas()
         {
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                   DISCIPLINAS                    |");
+            Console.WriteLine("  |       DISCIPLINAS CADASTRADAS NO SISTEMA       |");
             Console.WriteLine("  +================================================+\n");
 
             foreach (int i in Enum.GetValues(typeof(Disciplina)))
@@ -19,9 +19,8 @@ namespace sistema_escolar.console.Metodos
         }
         public static void exibeAnos()
         {
-            
             Console.WriteLine("\n  +================================================+");
-            Console.WriteLine("  |                      ANOS                      |");
+            Console.WriteLine("  |          ANOS CADASTRADAS NO SISTEMA           |");
             Console.WriteLine("  +================================================+\n");
 
             foreach (int i in Enum.GetValues(typeof(Ano)))
@@ -31,10 +30,10 @@ namespace sistema_escolar.console.Metodos
 
             Console.Write("\n");
         }
-        public static void TrataErro(Exception ex)
+        public static void TrataErroGenerico(Exception ex)
         {
-            Console.WriteLine("\n  Ocorreu um erro ao realizar esta operação.");
-            Console.WriteLine($"  Contexto: {ex.Message}");
+            Console.WriteLine("\n  Ocorreu algum problema ao realizar esta operação.");
+            Console.WriteLine($"  Mensagem: {ex.Message}");
         }
         public static void EsperaTecla()
         {

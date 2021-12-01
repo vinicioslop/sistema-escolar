@@ -17,12 +17,18 @@ namespace sistema_escolar.console.Views
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
                 Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | 1 - LISTAR ALUNOS                              |");
-                Console.WriteLine("  | 2 - LISTAR PROFESSORES                         |");
-                Console.WriteLine("  | 3 - CADASTRAR ALUNO                            |");
-                Console.WriteLine("  | 4 - CADASTRAR PROFESSOR                        |");
-                Console.WriteLine("  | 5 - ATUALIZAR ALUNO                            |");
-                Console.WriteLine("  | 6 - ATUALIZAR PROFESSOR                        |");
+                Console.WriteLine("  | 1 - LISTAR DADOS DE ALUNO CADASTRADO NO        |");
+                Console.WriteLine("  |     SISTEMA                                    |");
+                Console.WriteLine("  | 2 - LISTAR ALUNOS CADASTRADOS NO SISTEMA       |");
+                Console.WriteLine("  | 3 - LISTAR DADOS DE PROFESSORES CADASTRADOS NO |");
+                Console.WriteLine("  |     SISTEMA                                    |");
+                Console.WriteLine("  | 4 - LISTAR PROFESSORES CADASTRADOS NO SISTEMA  |");
+                Console.WriteLine("  | 5 - CADASTRAR ALUNO NO SISTEMA                 |");
+                Console.WriteLine("  | 6 - CADASTRAR PROFESSOR NO SISTEMA             |");
+                Console.WriteLine("  | 7 - ATUALIZAR DADOS DE ALUNO CADASTRADO NO     |");
+                Console.WriteLine("  |     SISTEMA                                    |");
+                Console.WriteLine("  | 8 - ATUALIZAR DADOS DE PROFESSOR CADASTRADO NO |");
+                Console.WriteLine("  |     SISTEMA                                    |");
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
                 Console.WriteLine("  +================================================+");
@@ -38,96 +44,42 @@ namespace sistema_escolar.console.Views
             switch (opcao)
             {
                 case "1":
-                    listarAlunos();
+                    listarAluno();
                     break;
                 case "2":
-                    listarProfessores();
+                    listarAlunos();
                     break;
                 case "3":
-                    cadastrarAluno();
+                    listarProfessor();
                     break;
                 case "4":
-                    cadastrarProfessor();
+                    listarProfessores();
                     break;
                 case "5":
-                    atualizarAluno();
+                    cadastrarAluno();
                     break;
                 case "6":
+                    cadastrarProfessor();
+                    break;
+                case "7":
+                    atualizarAluno();
+                    break;
+                case "8":
                     atualizarProfessor();
                     break;
                 default:
                     break;
             }
         }
-        public void cadastrarProfessor()
+        public void listarAluno()
         {
             try
             {
-                Metodos.Metodos.CadastrarProfessor();
+                Metodos.Metodos.ListarAluno();
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
-                MetodosComplementares.EsperaTecla();
-                return;
-            }
-
-            MetodosComplementares.EsperaTecla();
-        }
-        public void atualizarProfessor()
-        {
-            try
-            {
-                Metodos.Metodos.AtualizarProfessor();
-            }
-            catch (Exception ex)
-            {
-                MetodosComplementares.TrataErro(ex);
-                MetodosComplementares.EsperaTecla();
-                return;
-            }
-
-            MetodosComplementares.EsperaTecla();
-        }
-        public void listarProfessores()
-        {
-            try
-            {
-                Metodos.Metodos.ListarProfessores();
-            }
-            catch (Exception ex)
-            {
-                MetodosComplementares.TrataErro(ex);
-                MetodosComplementares.EsperaTecla();
-                return;
-            }
-
-            MetodosComplementares.EsperaTecla();
-        }
-        public void cadastrarAluno()
-        {
-            try
-            {
-                Metodos.Metodos.CadastrarAluno();
-            }
-            catch (Exception ex)
-            {
-                MetodosComplementares.TrataErro(ex);
-                MetodosComplementares.EsperaTecla();
-                return;
-            }
-
-            MetodosComplementares.EsperaTecla();
-        }
-        public void atualizarAluno()
-        {
-            try
-            {
-                Metodos.Metodos.AtualizarAluno();
-            }
-            catch (Exception ex)
-            {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -142,7 +94,97 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void listarProfessor()
+        {
+            try
+            {
+                Metodos.Metodos.ListarProfessor();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void listarProfessores()
+        {
+            try
+            {
+                Metodos.Metodos.ListarProfessores();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void cadastrarAluno()
+        {
+            try
+            {
+                Metodos.Metodos.CadastrarAluno();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void cadastrarProfessor()
+        {
+            try
+            {
+                Metodos.Metodos.CadastrarProfessor();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void atualizarAluno()
+        {
+            try
+            {
+                Metodos.Metodos.AtualizarAluno();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
+                MetodosComplementares.EsperaTecla();
+                return;
+            }
+
+            MetodosComplementares.EsperaTecla();
+        }
+        public void atualizarProfessor()
+        {
+            try
+            {
+                Metodos.Metodos.AtualizarProfessor();
+            }
+            catch (Exception ex)
+            {
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }

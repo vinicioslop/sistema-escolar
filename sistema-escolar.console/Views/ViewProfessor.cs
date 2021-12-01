@@ -17,11 +17,12 @@ namespace sistema_escolar.console.Views
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
                 Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | 1 - LISTAR ALUNOS                              |");
-                Console.WriteLine("  | 2 - LISTAR ALUNO                               |");
-                Console.WriteLine("  | 3 - LISTAR NOTAS                               |");
-                Console.WriteLine("  | 4 - INSERÇÃO DE NOTA DO ALUNO                  |");
-                Console.WriteLine("  | 5 - CALCULAR MÉDIA DO ALUNO                    |");
+                Console.WriteLine("  | 1 - LISTAR ALUNOS CADASTRADOS NO SISTEMA       |");
+                Console.WriteLine("  | 2 - LISTAR DADOS DE ALUNO CADASTRADO NO        |");
+                Console.WriteLine("  |     SISTEMA                                    |");
+                Console.WriteLine("  | 3 - LISTAR NOTAS CADASTRADOS NO SISTEMA        |");
+                Console.WriteLine("  | 4 - INSERIR NOTA DE ALUNO                      |");
+                Console.WriteLine("  | 5 - CALCULAR MÉDIA DE ALUNO                    |");
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
                 Console.WriteLine("  +================================================+");
@@ -63,7 +64,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -74,11 +75,11 @@ namespace sistema_escolar.console.Views
         {
             try
             {
-                ViewAluno.listarAluno();
+                Metodos.Metodos.ListarAluno();
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -93,7 +94,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -108,7 +109,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
@@ -123,7 +124,7 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.TrataErroGenerico(ex);
                 MetodosComplementares.EsperaTecla();
                 return;
             }
