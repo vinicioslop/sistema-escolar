@@ -1,10 +1,10 @@
 using System;
 
-namespace sistema_escolar.console
+namespace sistema_escolar.console.Metodos
 {
-    public class MetodosEnum
+    public static class MetodosComplementares
     {
-        public void ExibeDisciplinas()
+        public static void ExibeDisciplinas()
         {
             Console.WriteLine("\n  +================================================+");
             Console.WriteLine("  |                   DISCIPLINAS                    |");
@@ -17,7 +17,7 @@ namespace sistema_escolar.console
 
             Console.Write("\n");
         }
-        public void exibeAnos()
+        public static void exibeAnos()
         {
             
             Console.WriteLine("\n  +================================================+");
@@ -30,6 +30,16 @@ namespace sistema_escolar.console
             }
 
             Console.Write("\n");
+        }
+        public static void TrataErro(Exception ex)
+        {
+            Console.WriteLine("\n  Ocorreu um erro ao realizar esta operação.");
+            Console.WriteLine($"  Contexto: {ex.Message}");
+        }
+        public static void EsperaTecla()
+        {
+            Console.Write("\n  Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

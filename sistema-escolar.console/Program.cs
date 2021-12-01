@@ -9,10 +9,6 @@ namespace sistema_escolar.console
         public static ViewSecretaria viewSecretaria = new ViewSecretaria();
         public static ViewProfessor viewProfessor = new ViewProfessor();
         public static ViewAluno viewAluno = new ViewAluno();
-
-        // APAGAR DEPOIS SE NECESSARIO
-        public static MetodosProfessor metodosProfessor = new MetodosProfessor();
-        public static MetodosAluno metodosAluno = new MetodosAluno();
         static void Main(string[] args)
         {
             string opcao;
@@ -55,23 +51,16 @@ namespace sistema_escolar.console
                     viewAluno.HomeAluno();
                     break;
                 case "0":
-                    metodosAluno.IniciaAlunosMockados();
-                    metodosAluno.IniciaNotasMockadas();
-                    metodosProfessor.IniciaProfessoresMockados();
+                    Metodos.Metodos.IniciaDadosMockados();
                     break;
                 case "X":
                     Console.WriteLine("\n  Saindo...");
                     break;
                 default:
                     Console.WriteLine("\n  Opção digitada é inválida! Tente novamente.");
-                    EsperaTecla();
+                    Metodos.MetodosComplementares.EsperaTecla();
                     break;
             }
-        }
-        static void EsperaTecla()
-        {
-            Console.Write("\n  Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
         }
     }
 }

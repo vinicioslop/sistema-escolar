@@ -5,8 +5,6 @@ namespace sistema_escolar.console.Views
 {
     public class ViewProfessor
     {
-        public static MetodosProfessor metodosProfessor = new MetodosProfessor();
-        public static MetodosAluno metodosAluno = new MetodosAluno();
         public void HomeProfessor()
         {
             string opcao;
@@ -61,16 +59,16 @@ namespace sistema_escolar.console.Views
         {
             try
             {
-                metodosAluno.ListarAlunos();
+                Metodos.Metodos.ListarAlunos();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public static void listarAluno()
         {
@@ -80,67 +78,57 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public static void listarNotas()
         {
             try
             {
-                metodosAluno.ListarNotas();
+                Metodos.Metodos.ListarNotas();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public static void inserirNota()
         {
             try
             {
-                metodosAluno.InserirNota();
+                Metodos.Metodos.InserirNota();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public static void calcularMedia()
         {
             try
             {
-                metodosAluno.CalcularMedia();
+                Metodos.Metodos.CalcularMedia();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
-        }
-        public static void TrataErro(Exception ex)
-        {
-            Console.WriteLine("  Ocorreu um erro ao realizar esta operação.");
-            Console.WriteLine($"  Contexto: {ex.Message}");
-        }
-        public static void EsperaTecla()
-        {
-            Console.Write("  Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            MetodosComplementares.EsperaTecla();
         }
     }
 }

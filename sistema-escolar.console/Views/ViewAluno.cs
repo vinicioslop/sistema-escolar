@@ -5,7 +5,6 @@ namespace sistema_escolar.console.Views
 {
     public class ViewAluno
     {
-        public static MetodosAluno metodosAluno = new MetodosAluno();
         public void HomeAluno()
         {
             string opcao;
@@ -48,42 +47,33 @@ namespace sistema_escolar.console.Views
         {
             try
             {
-                metodosAluno.ListarAluno();
+                Metodos.Metodos.ListarAluno();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
 
         public static void listarNota()
         {
             try
             {
-                metodosAluno.ListarNota();
+                Metodos.Metodos.ListarNota();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
-        static void TrataErro(Exception ex)
-        {
-            Console.WriteLine("  Ocorreu um erro ao realizar esta operação.");
-            Console.WriteLine($"  Contexto: {ex.Message}");
-        }
-        static void EsperaTecla()
-        {
-            Console.Write("  Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
-        }
+        
     }
 }

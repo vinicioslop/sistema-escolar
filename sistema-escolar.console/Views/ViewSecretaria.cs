@@ -5,9 +5,6 @@ namespace sistema_escolar.console.Views
 {
     public class ViewSecretaria
     {
-        public static MetodosProfessor metodosProfessor = new MetodosProfessor();
-        public static MetodosAluno metodosAluno = new MetodosAluno();
-
         public void HomeSecretaria()
         {
             string opcao;
@@ -66,101 +63,91 @@ namespace sistema_escolar.console.Views
         {
             try
             {
-                metodosProfessor.CadastrarProfessor();
+                Metodos.Metodos.CadastrarProfessor();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public void atualizarProfessor()
         {
             try
             {
-                metodosProfessor.AtualizarProfessor();
+                Metodos.Metodos.AtualizarProfessor();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public void listarProfessores()
         {
             try
             {
-                metodosProfessor.ListarProfessores();
+                Metodos.Metodos.ListarProfessores();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public void cadastrarAluno()
         {
             try
             {
-                metodosAluno.CadastrarAluno();
+                Metodos.Metodos.CadastrarAluno();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public void atualizarAluno()
         {
             try
             {
-                metodosAluno.AtualizarAluno();
+                Metodos.Metodos.AtualizarAluno();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
+            MetodosComplementares.EsperaTecla();
         }
         public void listarAlunos()
         {
             try
             {
-                metodosAluno.ListarAlunos();
+                Metodos.Metodos.ListarAlunos();
             }
             catch (Exception ex)
             {
-                TrataErro(ex);
-                EsperaTecla();
+                MetodosComplementares.TrataErro(ex);
+                MetodosComplementares.EsperaTecla();
                 return;
             }
 
-            EsperaTecla();
-        }
-        static void TrataErro(Exception ex)
-        {
-            Console.WriteLine("  Ocorreu um erro ao realizar esta operação.");
-            Console.WriteLine($"  Contexto: {ex.Message}");
-        }
-        static void EsperaTecla()
-        {
-            Console.Write("  Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            MetodosComplementares.EsperaTecla();
         }
     }
 }
