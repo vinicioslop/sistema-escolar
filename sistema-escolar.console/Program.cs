@@ -20,20 +20,23 @@ namespace sistema_escolar.console
             {
                 Console.Clear();
 
-                Console.WriteLine("Bem-vindo ao Sistema Escolar Simplficado");
-                Console.WriteLine("da Escola Estadual de Algum Lugar!\n");
+                Console.WriteLine("  +================================================+");
+                Console.WriteLine("  |    Bem-vindo ao Sistema Escolar Simplficado    |");
+                Console.WriteLine("  |       da Escola Estadual de Algum Lugar!       |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | Insira a opção com base no tipo de acesso      |");
+                Console.WriteLine("  | preferido:                                     |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | 1 - INTERFACE DE SECRETARIA                    |");
+                Console.WriteLine("  | 2 - INTERFACE DE PROFESSOR                     |");
+                Console.WriteLine("  | 3 - INTERFACE DE ALUNO                         |");
+                Console.WriteLine("  | 0 - INICIAR DADOS MOCKADOS                     |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | X - SAIR                                       |");
+                Console.WriteLine("  +================================================+");
 
-                Console.WriteLine("Insira a opção com base no tipo de acesso preferido:");
-                Console.WriteLine("1 - SECRETARIA");
-                Console.WriteLine("2 - PROFESSOR");
-                Console.WriteLine("3 - ALUNO");
-                Console.WriteLine("0 - INICIAR DADOS MOCKADOS");
-                Console.WriteLine("X - SAIR\n");
-
-                Console.Write("Informe a opção desejada: ");
+                Console.Write("\n  Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
-
-                Console.Write("\n");
 
                 Opcoes(opcao);
             } while (opcao != "X");
@@ -57,11 +60,18 @@ namespace sistema_escolar.console
                     metodosProfessor.IniciaProfessoresMockados();
                     break;
                 case "X":
+                    Console.WriteLine("\n  Saindo...");
                     break;
                 default:
-                    Console.WriteLine("Opção digitada é inválida!");
+                    Console.WriteLine("\n  Opção digitada é inválida! Tente novamente.");
+                    EsperaTecla();
                     break;
             }
+        }
+        static void EsperaTecla()
+        {
+            Console.Write("\n  Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }

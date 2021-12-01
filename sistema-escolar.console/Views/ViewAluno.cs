@@ -13,20 +13,24 @@ namespace sistema_escolar.console.Views
             {
                 Console.Clear();
 
-                Console.WriteLine("INTERFACE DO ALUNO\n");
+                Console.WriteLine("  +================================================+");
+                Console.WriteLine("  |               INTERFACE DO ALUNO               |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | 1 - VIZUALIZAR DADOS DO ALUNO                  |");
+                Console.WriteLine("  | 2 - VIZUALIZAR NOTAS DO ALUNO                  |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
+                Console.WriteLine("  +================================================+");
 
-                Console.WriteLine("Insira a opção com base na ação preferida:\n");
-                Console.WriteLine("1 - VIZUALIZAR DADOS DO ALUNO");
-                Console.WriteLine("2 - VIZUALIZAR NOTAS DO ALUNO");
-                Console.WriteLine("X - VOLTAR PARA A HOME\n");
-
-                Console.Write("Informe a opção desejada: ");
+                Console.Write("\n  Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
 
                 OpcoesAluno(opcao);
             } while (opcao != "X");
         }
-        public void OpcoesAluno(string opcao)
+        static void OpcoesAluno(string opcao)
         {
             switch (opcao)
             {
@@ -40,7 +44,7 @@ namespace sistema_escolar.console.Views
                     break;
             }
         }
-        public void listarAluno()
+        public static void listarAluno()
         {
             try
             {
@@ -48,15 +52,15 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            EsperaTecla();
         }
 
-        public void listarNota()
+        public static void listarNota()
         {
             try
             {
@@ -64,11 +68,21 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
+            EsperaTecla();
+        }
+        static void TrataErro(Exception ex)
+        {
+            Console.WriteLine("  Ocorreu um erro ao realizar esta operação.");
+            Console.WriteLine($"  Contexto: {ex.Message}");
+        }
+        static void EsperaTecla()
+        {
+            Console.Write("  Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
     }

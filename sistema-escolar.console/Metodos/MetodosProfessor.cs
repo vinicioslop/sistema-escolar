@@ -35,13 +35,18 @@ namespace sistema_escolar.console.Metodos
         public void ListarProfessores()
         {
             Console.Clear();
-            Console.WriteLine("LISTAGEM DE PROFESSORES\n");
+
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |             LISTAGEM DE PROFESSORES            |");
+            Console.WriteLine("  +================================================+");
 
             var lista = repositorioProfessores.Lista();
 
+            Console.Write("\n");
+
             foreach (var professor in lista)
             {
-                Console.Write($"ID: {professor.Id} | NOME: {professor.Nome} {professor.Sobrenome}");
+                Console.Write($"  ID: {professor.Id} | NOME: {professor.Nome} {professor.Sobrenome}");
                 Console.WriteLine($" | DISCIPLINA: {professor.Disciplina}");
             }
 
@@ -51,9 +56,12 @@ namespace sistema_escolar.console.Metodos
         public void ListarProfessor()
         {
             Console.Clear();
-            Console.WriteLine("LISTAGEM DE PROFESSOR\n");
+            
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |              LISTAGEM DE PROFESSOR             |");
+            Console.WriteLine("  +================================================+");
 
-            Console.Write("Insira o ID do professor: ");
+            Console.Write("\n  Insira o ID do professor: ");
             int idE = Convert.ToInt32(Console.ReadLine());
 
             Professor professor = repositorioProfessores.RetornaPorId(idE);
@@ -61,28 +69,36 @@ namespace sistema_escolar.console.Metodos
             if (professor == null)
                 throw new Exception("Não professor cadastrado com este ID.");
 
-            Console.WriteLine("\nDADOS NO SISTEMA\n");
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |                DADOS NO SISTEMA                |");
+            Console.WriteLine("  +================================================+");
 
-            Console.WriteLine($"NOME......: {professor.Nome} {professor.Sobrenome}");
-            Console.WriteLine($"CPF.......: {professor.CPF}");
-            Console.WriteLine($"DISCIPLINA: {professor.Disciplina}");
+            Console.WriteLine($"\n  NOME......: {professor.Nome} {professor.Sobrenome}");
+            Console.WriteLine($"  CPF.......: {professor.CPF}");
+            Console.WriteLine($"  DISCIPLINA: {professor.Disciplina}");
         }
         public void CadastrarProfessor()
         {
             Console.Clear();
-            Console.WriteLine("CADASTRO DE PROFESSOR\n");
+
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |              CADASTRO DE PROFESSOR             |");
+            Console.WriteLine("  +================================================+");
 
             Professor professor = criaProfessor();
 
             repositorioProfessores.Inserir(professor);
         }
-        
+
         public void AtualizarProfessor()
         {
             Console.Clear();
-            Console.WriteLine("ATUALIZAÇÃO DE PROFESSOR\n");
-            
-            Console.Write("Informe o ID do professor: ");
+
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |            ATUALIZAÇÃO DE PROFESSOR            |");
+            Console.WriteLine("  +================================================+");
+
+            Console.Write("\n  Informe o ID do professor: ");
             int idProfessor = Convert.ToInt32(Console.ReadLine());
 
             if (repositorioProfessores.RetornaPorId(idProfessor) == null)
@@ -90,12 +106,15 @@ namespace sistema_escolar.console.Metodos
 
             var professorSistema = repositorioProfessores.RetornaPorId(idProfessor);
 
-            Console.WriteLine("\nDADOS INSERIDOS\n");
+            Console.WriteLine("\n  +================================================+");
+            Console.WriteLine("  |                 DADOS INSERIDOS                  |");
+            Console.WriteLine("  +================================================+");
 
-            Console.WriteLine($"NOME......: {professorSistema.Nome}");
-            Console.WriteLine($"SOBRENOME.: {professorSistema.Sobrenome}");
-            Console.WriteLine($"CPF.......: {professorSistema.CPF}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), professorSistema.Disciplina)}");
+
+            Console.WriteLine($"\n  NOME......: {professorSistema.Nome}");
+            Console.WriteLine($"  SOBRENOME.: {professorSistema.Sobrenome}");
+            Console.WriteLine($"  CPF.......: {professorSistema.CPF}");
+            Console.WriteLine($"  DISCIPLINA: {Enum.GetName(typeof(Disciplina), professorSistema.Disciplina)}");
 
             Professor professor = criaProfessor();
 
@@ -104,30 +123,29 @@ namespace sistema_escolar.console.Metodos
         public Professor criaProfessor()
         {
             Console.Write("\n");
-            
-            Console.Write("Digite o Nome.......: ");
+
+            Console.Write("  Digite o Nome.......: ");
             string nomeE = Console.ReadLine();
 
-            Console.Write("Digite o Sobrenome..: ");
+            Console.Write("  Digite o Sobrenome..: ");
             string sobrenomeE = Console.ReadLine();
 
-            Console.Write("Digite o CPF........: ");
+            Console.Write("  Digite o CPF........: ");
             string cpfE = Console.ReadLine();
 
             metodosEnum.ExibeDisciplinas();
 
-            Console.Write("Escolha a Disciplina: ");
+            Console.Write("\n  Escolha a Disciplina: ");
             int disciplinaE = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("DADOS INSERIDOS\n");
+            Console.WriteLine("\n  +================================================+");
+            Console.WriteLine("  |                 DADOS INSERIDOS                  |");
+            Console.WriteLine("  +================================================+");
 
-            Console.WriteLine($"NOME......: {nomeE}");
-            Console.WriteLine($"SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"CPF.......: {cpfE}");
-            Console.WriteLine($"DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}\n");
-
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            Console.WriteLine($"\n  NOME......: {nomeE}");
+            Console.WriteLine($"  SOBRENOME.: {sobrenomeE}");
+            Console.WriteLine($"  CPF.......: {cpfE}");
+            Console.WriteLine($"  DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}\n");
 
             return new Professor(
                 id: repositorioProfessores.ProximoId(),

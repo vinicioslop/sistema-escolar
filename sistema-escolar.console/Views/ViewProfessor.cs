@@ -7,23 +7,28 @@ namespace sistema_escolar.console.Views
     {
         public static MetodosProfessor metodosProfessor = new MetodosProfessor();
         public static MetodosAluno metodosAluno = new MetodosAluno();
-        public static ViewAluno viewAluno = new ViewAluno();
         public void HomeProfessor()
         {
             string opcao;
             do
             {
                 Console.Clear();
-                Console.WriteLine("INTERFACE DO PROFESSOR\n");
-                Console.WriteLine("Insira a opção com base na ação preferida:");
-                Console.WriteLine("1 - LISTAR ALUNOS");
-                Console.WriteLine("2 - LISTAR ALUNO");
-                Console.WriteLine("3 - LISTAR NOTAS");
-                Console.WriteLine("4 - INSERÇÃO DE NOTA DO ALUNO");
-                Console.WriteLine("5 - CALCULAR MÉDIA DO ALUNO");
-                Console.WriteLine("X - VOLTAR PARA A HOME\n");
 
-                Console.Write("Informe a opção desejada: ");
+                Console.WriteLine("  +================================================+");
+                Console.WriteLine("  |             INTERFACE DO PROFESSOR             |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | 1 - LISTAR ALUNOS                              |");
+                Console.WriteLine("  | 2 - LISTAR ALUNO                               |");
+                Console.WriteLine("  | 3 - LISTAR NOTAS                               |");
+                Console.WriteLine("  | 4 - INSERÇÃO DE NOTA DO ALUNO                  |");
+                Console.WriteLine("  | 5 - CALCULAR MÉDIA DO ALUNO                    |");
+                Console.WriteLine("  +------------------------------------------------+");
+                Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
+                Console.WriteLine("  +================================================+");
+
+                Console.Write("\n  Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
 
                 OpcoesProfessor(opcao);
@@ -52,7 +57,7 @@ namespace sistema_escolar.console.Views
                     break;
             }
         }
-        public void listarAlunos()
+        public static void listarAlunos()
         {
             try
             {
@@ -60,29 +65,29 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            EsperaTecla();
         }
-        public void listarAluno()
+        public static void listarAluno()
         {
             try
             {
-                viewAluno.listarAluno();
+                ViewAluno.listarAluno();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            EsperaTecla();
         }
-        public void listarNotas()
+        public static void listarNotas()
         {
             try
             {
@@ -90,14 +95,14 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}\n");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("Pressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            EsperaTecla();
         }
-        public void inserirNota()
+        public static void inserirNota()
         {
             try
             {
@@ -105,14 +110,14 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
+            EsperaTecla();
         }
-        public void calcularMedia()
+        public static void calcularMedia()
         {
             try
             {
@@ -120,11 +125,21 @@ namespace sistema_escolar.console.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ao realizar esta operação.\n");
-                Console.WriteLine($"Contexto: {ex.Message}");
+                TrataErro(ex);
+                EsperaTecla();
+                return;
             }
 
-            Console.Write("\nPressione qualquer tecla para continuar...");
+            EsperaTecla();
+        }
+        public static void TrataErro(Exception ex)
+        {
+            Console.WriteLine("  Ocorreu um erro ao realizar esta operação.");
+            Console.WriteLine($"  Contexto: {ex.Message}");
+        }
+        public static void EsperaTecla()
+        {
+            Console.Write("  Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
     }

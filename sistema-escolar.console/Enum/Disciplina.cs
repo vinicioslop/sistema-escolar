@@ -6,7 +6,7 @@ namespace sistema_escolar.console
         MATEMATICA = 2,
         HISTORIA = 3,
         GEOGRAFIA = 4,
-        CIENCIAS = 5,  
+        CIENCIAS = 5,
         EDUCACAO_FISICA = 6,
         ARTES = 7
     }
