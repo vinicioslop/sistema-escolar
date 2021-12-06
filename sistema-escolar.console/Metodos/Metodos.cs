@@ -9,6 +9,7 @@ namespace sistema_escolar.console.Metodos
         public static ProfessorRepositorio repositorioProfessores = new ProfessorRepositorio();
         public static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         public static NotaRepositorio repositorioNotas = new NotaRepositorio();
+        public static SalaRepositorio repositorioSalas = new SalaRepositorio();
 
         // INICIA DADOS MOCKADOS DE
         public static void IniciaDadosMockados()
@@ -472,6 +473,15 @@ namespace sistema_escolar.console.Metodos
                 cpf: cpfE,
                 disciplina: (Disciplina)disciplinaE
             );
+        }
+        // MÉTODOS DE SALAS
+        public static void CadastrarSala()
+        {
+            Console.Clear();
+
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |                CADASTRO DE SALA                |");
+            Console.WriteLine("  +================================================+");
         }
     }
 }
