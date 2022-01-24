@@ -1,4 +1,5 @@
-using System;
+﻿using sistema_escolar.console.Classes;
+using sistema_escolar.console.Classes.Extras;
 using sistema_escolar.console.Repositorios;
 
 namespace sistema_escolar.console.Metodos
@@ -9,7 +10,6 @@ namespace sistema_escolar.console.Metodos
         public static ProfessorRepositorio repositorioProfessores = new ProfessorRepositorio();
         public static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         public static NotaRepositorio repositorioNotas = new NotaRepositorio();
-        public static SalaRepositorio repositorioSalas = new SalaRepositorio();
 
         // INICIA DADOS MOCKADOS DE
         public static void IniciaDadosMockados()
@@ -129,7 +129,7 @@ namespace sistema_escolar.console.Metodos
                 {
                     if (nota.Disciplina == (Disciplina)disciplina)
                     {
-                        idNota = nota.IdNota;
+                        idNota = nota.Id;
                         primeira = false;
                     }
                 }
@@ -292,7 +292,7 @@ namespace sistema_escolar.console.Metodos
             Console.Write("\n");
 
             var listaNotas = repositorioNotas.Lista();
-            
+
             if (listaNotas.Count < 1)
                 throw new Exception("Não há notas cadastradas no sistema.");
 

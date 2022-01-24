@@ -1,8 +1,8 @@
-namespace sistema_escolar.console
+﻿namespace sistema_escolar.console.Classes.Extras
 {
     public class Nota
     {
-        public int IdNota { get; protected set; }
+        public int Id { get; protected set; }
         public int IdAluno { get; protected set; }
         public Disciplina Disciplina { get; protected set; }
         public double PrimeiraNota { get; protected set; }
@@ -13,10 +13,9 @@ namespace sistema_escolar.console
         public Status Status { get; protected set; }
         public Nota(int id, int idAluno, Disciplina disciplina)
         {
-            this.IdNota = id;
+            this.Id = id;
             this.IdAluno = idAluno;
             this.Disciplina = disciplina;
-            this.Status = Status.CURSANDO;
         }
         public void InsereNota(int opcao, double nota)
         {

@@ -1,6 +1,6 @@
-namespace sistema_escolar.console
+﻿namespace sistema_escolar.console.Classes
 {
-    public class Aluno : EntidadeBase
+    public class Aluno : Pessoa
     {
         public Ano Ano { get; protected set; }
         public Aluno(int id, string nome, string sobrenome, string cpf, Ano ano)

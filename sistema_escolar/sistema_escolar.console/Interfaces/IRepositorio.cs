@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace sistema_escolar.console.Interfaces
+﻿namespace sistema_escolar.console.Interfaces
 {
     public interface IRepositorio<T>
     {

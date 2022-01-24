@@ -1,5 +1,4 @@
-using System;
-using sistema_escolar.console.Metodos;
+﻿using sistema_escolar.console.Metodos;
 
 namespace sistema_escolar.console.Views
 {
@@ -74,6 +73,6 @@ namespace sistema_escolar.console.Views
 
             MetodosComplementares.EsperaTecla();
         }
-        
+
     }
 }

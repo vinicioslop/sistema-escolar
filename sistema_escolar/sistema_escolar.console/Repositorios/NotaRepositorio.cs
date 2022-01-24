@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using sistema_escolar.console.Classes.Extras;
 using sistema_escolar.console.Interfaces;
 
 namespace sistema_escolar.console.Repositorios

@@ -1,6 +1,4 @@
-using System;
-
-namespace sistema_escolar.console.Metodos
+﻿namespace sistema_escolar.console.Metodos
 {
     public static class MetodosComplementares
     {

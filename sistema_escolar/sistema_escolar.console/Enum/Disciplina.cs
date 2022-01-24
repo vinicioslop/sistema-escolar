@@ -1,4 +1,4 @@
-namespace sistema_escolar.console
+﻿namespace sistema_escolar.console
 {
     public enum Disciplina
     {

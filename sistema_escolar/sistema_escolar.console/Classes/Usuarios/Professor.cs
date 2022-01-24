@@ -1,6 +1,6 @@
-namespace sistema_escolar.console
+﻿namespace sistema_escolar.console.Classes
 {
-    public class Professor : EntidadeBase
+    public class Professor : Pessoa
     {
         public Disciplina Disciplina { get; protected set; }
         public Professor(int id, string nome, string sobrenome, string cpf, Disciplina disciplina)

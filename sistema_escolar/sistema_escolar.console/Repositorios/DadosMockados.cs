@@ -1,3 +1,6 @@
+﻿using sistema_escolar.console.Classes;
+using sistema_escolar.console.Classes.Extras;
+
 namespace sistema_escolar.console.Repositorios
 {
     public class DadosMockados

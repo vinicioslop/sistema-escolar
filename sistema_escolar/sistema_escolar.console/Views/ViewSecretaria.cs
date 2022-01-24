@@ -1,5 +1,4 @@
-using System;
-using sistema_escolar.console.Metodos;
+﻿using sistema_escolar.console.Metodos;
 
 namespace sistema_escolar.console.Views
 {
@@ -7,43 +6,21 @@ namespace sistema_escolar.console.Views
     {
         public void HomeSecretaria()
         {
-            string opcao, pagina = "1";
+            string opcao;
 
             do
             {
                 Console.Clear();
 
-                switch(pagina)
-                {
-                    case "1":
-                        PrimeiraPagina();
-                        break;
-                    case "2":
-                        SegundaPagina();
-                        break;
-                    default:
-                        break;
-                }
+                Pagina();
 
                 Console.Write("\n  Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
 
-                if(opcao == "9")
-                {
-                    if(pagina == "2")
-                    {
-                        pagina = "1";
-                        continue;
-                    }
-                    
-                    pagina = "2";
-                    continue;
-                }
-
-                Opcoes(pagina, opcao);
+                Opcoes(opcao);
             } while (opcao != "X");
         }
-        public void PrimeiraPagina()
+        public void Pagina()
         {
             Console.WriteLine("  +================================================+");
             Console.WriteLine("  |           Interface de Secretario(a)           |");
@@ -69,39 +46,7 @@ namespace sistema_escolar.console.Views
             Console.WriteLine("  |                   PÁGINA 1/2                   |");
             Console.WriteLine("  +================================================+");
         }
-        public void SegundaPagina()
-        {
-            Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |           Interface de Secretario(a)           |");
-            Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
-            Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  | 1 - CADASTRAR UMA NOVA SALA                    |");
-            Console.WriteLine("  | 2 - ATUALIZAR UMA SALA EXISTENTE               |");
-            Console.WriteLine("  | 3 - ADICIONAR ALUNO A UMA SALA                 |");
-            Console.WriteLine("  | 4 - RETIRAR ALUNO DE UMA SALA                  |");
-            Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  | 9 - VOLTA PARA A PÁGINA ANTERIOR               |");
-            Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
-            Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  |                   PÁGINA 2/2                   |");
-            Console.WriteLine("  +================================================+");
-        }
-        public void Opcoes(string opcao, string pagina)
-        {
-            switch(pagina)
-            {
-                case "1":
-                    OpcoesPrimeiraPagina(opcao);
-                    break;
-                case "2":
-                    OpcoesSegundaPagina(opcao);
-                    break;
-                default:
-                    break;
-            }
-        }
-        public void OpcoesPrimeiraPagina(string opcao)
+        public void Opcoes(string opcao)
         {
             switch (opcao)
             {
@@ -128,26 +73,6 @@ namespace sistema_escolar.console.Views
                     break;
                 case "8":
                     atualizarProfessor();
-                    break;
-                default:
-                    break;
-            }
-        }
-        public void OpcoesSegundaPagina(string opcao)
-        {
-            switch (opcao)
-            {
-                case "1":
-                    cadastrarSala();
-                    break;
-                case "2":
-                    atualizarSala();
-                    break;
-                case "3":
-                    adicionarAlunoNaSala();
-                    break;
-                case "4":
-                    retirarAlunoDaSala();
                     break;
                 default:
                     break;
@@ -271,26 +196,6 @@ namespace sistema_escolar.console.Views
                 return;
             }
 
-            MetodosComplementares.EsperaTecla();
-        }
-        public void cadastrarSala()
-        {
-            Console.WriteLine("  FUNDCIONA.");
-            MetodosComplementares.EsperaTecla();
-        }
-        public void atualizarSala()
-        {
-            Console.WriteLine("  FUNDCIONA.");
-            MetodosComplementares.EsperaTecla();
-        }
-        public void adicionarAlunoNaSala()
-        {
-            Console.WriteLine("  FUNDCIONA.");
-            MetodosComplementares.EsperaTecla();
-        }
-        public void retirarAlunoDaSala()
-        {
-            Console.WriteLine("  FUNDCIONA.");
             MetodosComplementares.EsperaTecla();
         }
     }
