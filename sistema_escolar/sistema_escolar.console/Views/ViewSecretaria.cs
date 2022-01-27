@@ -6,21 +6,33 @@ namespace sistema_escolar.console.Views
     {
         public void HomeSecretaria()
         {
-            string opcao;
+            string entrada;
+            bool nulo = false;
 
             do
             {
                 Console.Clear();
 
-                Pagina();
+                exibeOpcoes();
 
-                Console.Write("\n  Informe a opção desejada: ");
-                opcao = Console.ReadLine().ToUpper();
+                do
+                {
+                    Console.Write("\n  Informe a opção desejada: ");
+                    entrada = Console.ReadLine().ToUpper();
 
-                Opcoes(opcao);
-            } while (opcao != "X");
+                    if (MetodosComplementares.VerificaSeNuloS(entrada))
+                    {
+                        nulo = true;
+
+                        Console.WriteLine("\n  Entrada informada esta vazia.");
+                    }
+                    
+                } while (nulo);
+
+                opcoes(entrada);
+            } while (entrada != "X");
         }
-        public void Pagina()
+        public void exibeOpcoes()
         {
             Console.WriteLine("  +================================================+");
             Console.WriteLine("  |           Interface de Secretario(a)           |");
@@ -40,15 +52,12 @@ namespace sistema_escolar.console.Views
             Console.WriteLine("  | 8 - ATUALIZAR DADOS DE PROFESSOR CADASTRADO NO |");
             Console.WriteLine("  |     SISTEMA                                    |");
             Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  | 9 - PRÓXIMA PÁGINA                             |");
             Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
-            Console.WriteLine("  +------------------------------------------------+");
-            Console.WriteLine("  |                   PÁGINA 1/2                   |");
             Console.WriteLine("  +================================================+");
         }
-        public void Opcoes(string opcao)
+        public void opcoes(string entrada)
         {
-            switch (opcao)
+            switch (entrada)
             {
                 case "1":
                     listarAluno();

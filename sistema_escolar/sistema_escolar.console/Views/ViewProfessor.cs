@@ -6,35 +6,52 @@ namespace sistema_escolar.console.Views
     {
         public void HomeProfessor()
         {
-            string opcao;
+            string entrada;
+            bool nulo = false;
+
             do
             {
                 Console.Clear();
 
-                Console.WriteLine("  +================================================+");
-                Console.WriteLine("  |             INTERFACE DO PROFESSOR             |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | 1 - LISTAR ALUNOS CADASTRADOS NO SISTEMA       |");
-                Console.WriteLine("  | 2 - LISTAR DADOS DE ALUNO CADASTRADO NO        |");
-                Console.WriteLine("  |     SISTEMA                                    |");
-                Console.WriteLine("  | 3 - LISTAR NOTAS CADASTRADOS NO SISTEMA        |");
-                Console.WriteLine("  | 4 - INSERIR NOTA DE ALUNO                      |");
-                Console.WriteLine("  | 5 - CALCULAR MÉDIA DE ALUNO                    |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
-                Console.WriteLine("  +================================================+");
+                exibeOpcoes();
 
-                Console.Write("\n  Informe a opção desejada: ");
-                opcao = Console.ReadLine().ToUpper();
+                do
+                {
+                    Console.Write("\n  Informe a opção desejada: ");
+                    entrada = Console.ReadLine().ToUpper();
 
-                OpcoesProfessor(opcao);
-            } while (opcao != "X");
+                    if (MetodosComplementares.VerificaSeNuloS(entrada))
+                    {
+                        nulo = true;
+
+                        Console.WriteLine("\n  Entrada informada esta vazia.");
+                    }
+
+                } while (nulo);
+
+                opcoes(entrada);
+            } while (entrada != "X");
         }
-        public void OpcoesProfessor(string opcao)
+        public void exibeOpcoes()
         {
-            switch (opcao)
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |             INTERFACE DO PROFESSOR             |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | 1 - LISTAR ALUNOS CADASTRADOS NO SISTEMA       |");
+            Console.WriteLine("  | 2 - LISTAR DADOS DE ALUNO CADASTRADO NO        |");
+            Console.WriteLine("  |     SISTEMA                                    |");
+            Console.WriteLine("  | 3 - LISTAR NOTAS CADASTRADOS NO SISTEMA        |");
+            Console.WriteLine("  | 4 - INSERIR NOTA DE ALUNO                      |");
+            Console.WriteLine("  | 5 - CALCULAR MÉDIA DE ALUNO                    |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
+            Console.WriteLine("  +================================================+");
+        }
+        public void opcoes(string entrada)
+        {
+            switch (entrada)
             {
                 case "1":
                     listarAlunos();

@@ -10,6 +10,9 @@ namespace sistema_escolar.console
         static void Main(string[] args)
         {
             string opcao;
+
+            Metodos.Metodos.IniciaDadosMockados();
+
             do
             {
                 Console.Clear();
@@ -24,12 +27,13 @@ namespace sistema_escolar.console
                 Console.WriteLine("  | 1 - INTERFACE DE SECRETARIA                    |");
                 Console.WriteLine("  | 2 - INTERFACE DE PROFESSOR                     |");
                 Console.WriteLine("  | 3 - INTERFACE DE ALUNO                         |");
-                Console.WriteLine("  | 0 - INICIAR DADOS MOCKADOS                     |");
                 Console.WriteLine("  +------------------------------------------------+");
                 Console.WriteLine("  | X - SAIR                                       |");
                 Console.WriteLine("  +================================================+");
 
-                Console.Write("\n  Informe a opção desejada: ");
+                Console.WriteLine();
+
+                Console.Write("  Informe a opção desejada: ");
                 opcao = Console.ReadLine().ToUpper();
 
                 Opcoes(opcao);
@@ -47,9 +51,6 @@ namespace sistema_escolar.console
                     break;
                 case "3":
                     viewAluno.HomeAluno();
-                    break;
-                case "0":
-                    Metodos.Metodos.IniciaDadosMockados();
                     break;
                 case "X":
                     Console.WriteLine("\n  Saindo...");

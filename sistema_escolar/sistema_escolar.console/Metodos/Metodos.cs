@@ -11,7 +11,7 @@ namespace sistema_escolar.console.Metodos
         public static AlunoRepositorio repositorioAlunos = new AlunoRepositorio();
         public static NotaRepositorio repositorioNotas = new NotaRepositorio();
 
-        // INICIA DADOS MOCKADOS DE
+        // INICIA DADOS MOCKADOS DE PROFESSORES, ALUNOS E NOTAS
         public static void IniciaDadosMockados()
         {
             DadosMockados.IniciaDados();
@@ -62,9 +62,9 @@ namespace sistema_escolar.console.Metodos
 
             Console.WriteLine("\n  +================================================+");
             Console.WriteLine("  |            DADOS DO ALUNO NO SISTEMA           |");
-            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  +================================================+\n");
 
-            Console.WriteLine($"\n  NOME......: {aluno.Nome}");
+            Console.WriteLine($"  NOME......: {aluno.Nome}");
             Console.WriteLine($"  SOBRENOME.: {aluno.Sobrenome}");
             Console.WriteLine($"  CPF.......: {aluno.CPF}");
             Console.WriteLine($"  ANO.......: {Enum.GetName(typeof(Ano), aluno.Ano)}");
@@ -263,28 +263,43 @@ namespace sistema_escolar.console.Metodos
         }
         static Aluno criaAluno()
         {
-            Console.Write("\n  Digite o Nome.........: ");
-            string nomeE = Console.ReadLine();
+            string nome, sobrenome, cpf;
+            int ano;
 
-            Console.Write("  Digite o Sobrenome....: ");
-            string sobrenomeE = Console.ReadLine();
+            do
+            {
+                Console.Write("\n  Digite o Nome.........: ");
+                nome = Console.ReadLine();
+            } while (MetodosComplementares.VerificaSeNuloS(nome));
 
-            Console.Write("  Digite o CPF..........: ");
-            string cpfE = Console.ReadLine();
+            do
+            {
+                Console.Write("  Digite o Sobrenome....: ");
+                sobrenome = Console.ReadLine();
+            } while(MetodosComplementares.VerificaSeNuloS(sobrenome));
+
+            do
+            {
+                Console.Write("  Digite o CPF..........: ");
+                cpf = Console.ReadLine();
+            } while (MetodosComplementares.VerificaSeNuloS(cpf));
 
             MetodosComplementares.exibeAnos();
 
-            Console.Write("\n  Escolha o Ano do Aluno: ");
-            int anoE = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.Write("\n  Escolha o Ano do Aluno: ");
+                ano = Convert.ToInt32(Console.ReadLine());
+            } while (ano < 1);
 
             Console.Write("\n");
 
             return new Aluno(
                 id: repositorioAlunos.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                ano: (Ano)anoE
+                nome: nome,
+                sobrenome: sobrenome,
+                cpf: cpf,
+                ano: (Ano)ano
             );
         }
         static void listaNotas()
@@ -381,12 +396,12 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine("  +================================================+");
 
             Console.Write("\n  Insira o ID do professor: ");
-            int idE = Convert.ToInt32(Console.ReadLine());
+            int id = Convert.ToInt32(Console.ReadLine());
 
-            if (repositorioProfessores.RetornaPorId(idE) == null)
+            if (repositorioProfessores.RetornaPorId(id) == null)
                 throw new Exception("Não professor cadastrado com este ID.");
 
-            Professor professor = repositorioProfessores.RetornaPorId(idE);
+            Professor professor = repositorioProfessores.RetornaPorId(id);
 
             Console.WriteLine("  +================================================+");
             Console.WriteLine("  |                DADOS NO SISTEMA                |");
@@ -418,12 +433,12 @@ namespace sistema_escolar.console.Metodos
             Console.WriteLine("  +================================================+");
 
             Console.Write("\n  Informe o ID do professor: ");
-            int idProfessor = Convert.ToInt32(Console.ReadLine());
+            int id = Convert.ToInt32(Console.ReadLine());
 
-            if (repositorioProfessores.RetornaPorId(idProfessor) == null)
+            if (repositorioProfessores.RetornaPorId(id) == null)
                 throw new Exception("Não há professor cadastrado com este ID.");
 
-            var professorSistema = repositorioProfessores.RetornaPorId(idProfessor);
+            var professorSistema = repositorioProfessores.RetornaPorId(id);
 
             Console.WriteLine("\n  +================================================+");
             Console.WriteLine("  |                 DADOS INSERIDOS                  |");
@@ -437,51 +452,57 @@ namespace sistema_escolar.console.Metodos
 
             Professor professor = criaProfessor();
 
-            repositorioProfessores.Atualizar(idProfessor, professor);
+            repositorioProfessores.Atualizar(id, professor);
         }
         static Professor criaProfessor()
         {
             Console.Write("\n");
 
-            Console.Write("  Digite o Nome.......: ");
-            string nomeE = Console.ReadLine();
+            string nome, sobrenome, cpf;
+            int disciplina;
 
-            Console.Write("  Digite o Sobrenome..: ");
-            string sobrenomeE = Console.ReadLine();
+            do
+            {
+                Console.Write("\n  Digite o Nome.........: ");
+                nome = Console.ReadLine();
+            } while (MetodosComplementares.VerificaSeNuloS(nome));
 
-            Console.Write("  Digite o CPF........: ");
-            string cpfE = Console.ReadLine();
+            do
+            {
+                Console.Write("  Digite o Sobrenome....: ");
+                sobrenome = Console.ReadLine();
+            } while (MetodosComplementares.VerificaSeNuloS(sobrenome));
+
+            do
+            {
+                Console.Write("  Digite o CPF..........: ");
+                cpf = Console.ReadLine();
+            } while (MetodosComplementares.VerificaSeNuloS(cpf));
 
             MetodosComplementares.ExibeDisciplinas();
 
-            Console.Write("\n  Escolha a Disciplina: ");
-            int disciplinaE = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.Write("\n  Escolha a Disciplina: ");
+                disciplina = Convert.ToInt32(Console.ReadLine());
+            } while (disciplina < 1);
 
             Console.WriteLine("\n  +================================================+");
             Console.WriteLine("  |                 DADOS INSERIDOS                  |");
             Console.WriteLine("  +================================================+");
 
-            Console.WriteLine($"\n  NOME......: {nomeE}");
-            Console.WriteLine($"  SOBRENOME.: {sobrenomeE}");
-            Console.WriteLine($"  CPF.......: {cpfE}");
-            Console.WriteLine($"  DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplinaE)}\n");
+            Console.WriteLine($"\n  NOME......: {nome}");
+            Console.WriteLine($"  SOBRENOME.: {sobrenome}");
+            Console.WriteLine($"  CPF.......: {cpf}");
+            Console.WriteLine($"  DISCIPLINA: {Enum.GetName(typeof(Disciplina), disciplina)}\n");
 
             return new Professor(
                 id: repositorioProfessores.ProximoId(),
-                nome: nomeE,
-                sobrenome: sobrenomeE,
-                cpf: cpfE,
-                disciplina: (Disciplina)disciplinaE
+                nome: nome,
+                sobrenome: sobrenome,
+                cpf: cpf,
+                disciplina: (Disciplina)disciplina
             );
-        }
-        // MÉTODOS DE SALAS
-        public static void CadastrarSala()
-        {
-            Console.Clear();
-
-            Console.WriteLine("  +================================================+");
-            Console.WriteLine("  |                CADASTRO DE SALA                |");
-            Console.WriteLine("  +================================================+");
         }
     }
 }

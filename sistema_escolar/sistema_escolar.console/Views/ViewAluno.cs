@@ -6,31 +6,48 @@ namespace sistema_escolar.console.Views
     {
         public void HomeAluno()
         {
-            string opcao;
+            string entrada;
+            bool nulo = false;
+
             do
             {
                 Console.Clear();
 
-                Console.WriteLine("  +================================================+");
-                Console.WriteLine("  |               INTERFACE DO ALUNO               |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | 1 - VIZUALIZAR DADOS CADASTRAIS DO ALUNO       |");
-                Console.WriteLine("  | 2 - VIZUALIZAR NOTAS DO ALUNO NO SISTEMA       |");
-                Console.WriteLine("  +------------------------------------------------+");
-                Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
-                Console.WriteLine("  +================================================+");
+                exibeOpcoes();
 
-                Console.Write("\n  Informe a opção desejada: ");
-                opcao = Console.ReadLine().ToUpper();
+                do
+                {
+                    Console.Write("\n  Informe a opção desejada: ");
+                    entrada = Console.ReadLine().ToUpper();
 
-                OpcoesAluno(opcao);
-            } while (opcao != "X");
+                    if (MetodosComplementares.VerificaSeNuloS(entrada))
+                    {
+                        nulo = true;
+
+                        Console.WriteLine("\n  Entrada informada esta vazia.");
+                    }
+
+                } while (nulo);
+
+                opcoes(entrada);
+            } while (entrada != "X");
         }
-        static void OpcoesAluno(string opcao)
+        public void exibeOpcoes()
         {
-            switch (opcao)
+            Console.WriteLine("  +================================================+");
+            Console.WriteLine("  |               INTERFACE DO ALUNO               |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | Insira a opção com base na ação preferida:     |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | 1 - VIZUALIZAR DADOS CADASTRAIS DO ALUNO       |");
+            Console.WriteLine("  | 2 - VIZUALIZAR NOTAS DO ALUNO NO SISTEMA       |");
+            Console.WriteLine("  +------------------------------------------------+");
+            Console.WriteLine("  | X - VOLTAR PARA A HOME                         |");
+            Console.WriteLine("  +================================================+");
+        }
+        public void opcoes(string entrada)
+        {
+            switch (entrada)
             {
                 case "1":
                     listarAluno();
@@ -42,7 +59,7 @@ namespace sistema_escolar.console.Views
                     break;
             }
         }
-        public static void listarAluno()
+        public void listarAluno()
         {
             try
             {
@@ -58,7 +75,7 @@ namespace sistema_escolar.console.Views
             MetodosComplementares.EsperaTecla();
         }
 
-        public static void listarNota()
+        public void listarNota()
         {
             try
             {

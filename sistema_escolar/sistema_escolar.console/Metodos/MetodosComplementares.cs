@@ -38,5 +38,12 @@
             Console.Write("\n  Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
+        public static bool VerificaSeNuloS(string entrada)
+        {            
+            if (String.IsNullOrEmpty(entrada))
+                return true;
+
+            return false;
+        }
     }
 }
