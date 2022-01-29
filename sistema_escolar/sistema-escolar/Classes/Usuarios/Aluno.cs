@@ -1,4 +1,6 @@
-﻿namespace sistema_escolar.console.Classes
+﻿using sistema_escolar.console.Enum;
+
+namespace sistema_escolar.console.Classes
 {
     public class Aluno : Pessoa
     {

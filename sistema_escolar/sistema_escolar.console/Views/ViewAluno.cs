@@ -79,7 +79,7 @@ namespace sistema_escolar.console.Views
         {
             try
             {
-                Metodos.Metodos.ListarNota();
+                Metodos.Metodos.ListarNota(-1);
             }
             catch (Exception ex)
             {

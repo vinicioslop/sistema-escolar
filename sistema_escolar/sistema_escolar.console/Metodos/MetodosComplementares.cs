@@ -1,4 +1,6 @@
-﻿namespace sistema_escolar.console.Metodos
+﻿using sistema_escolar.console.Enum;
+
+namespace sistema_escolar.console.Metodos
 {
     public static class MetodosComplementares
     {
@@ -8,9 +10,9 @@
             Console.WriteLine("  |       DISCIPLINAS CADASTRADAS NO SISTEMA       |");
             Console.WriteLine("  +================================================+\n");
 
-            foreach (int i in Enum.GetValues(typeof(Disciplina)))
+            foreach (int i in System.Enum.GetValues(typeof(Disciplina)))
             {
-                Console.WriteLine("  {0} - {1}", i, Enum.GetName(typeof(Disciplina), i));
+                Console.WriteLine("  {0} - {1}", i, System.Enum.GetName(typeof(Disciplina), i));
             }
 
             Console.Write("\n");
@@ -21,9 +23,9 @@
             Console.WriteLine("  |          ANOS CADASTRADAS NO SISTEMA           |");
             Console.WriteLine("  +================================================+\n");
 
-            foreach (int i in Enum.GetValues(typeof(Ano)))
+            foreach (int i in System.Enum.GetValues(typeof(Ano)))
             {
-                Console.WriteLine("  {0} - {1}", i, Enum.GetName(typeof(Ano), i));
+                Console.WriteLine("  {0} - {1}", i, System.Enum.GetName(typeof(Ano), i));
             }
 
             Console.Write("\n");
